@@ -1,6 +1,5 @@
 
 .nutrition-icon__container {
-    padding-top: 55px;
     display: flex;
     flex-wrap: wrap;
     max-width: 370px;
@@ -11,6 +10,7 @@
 
 .nutrition-icon__content {
     display: flex;
+    margin: 5px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -37,15 +37,16 @@
     justify-content: center;
     align-items: center;
     height: 500px;
-    width: 600px;
+    width: 500px;
 }
 .nutrition-description{
     display: flex;
     flex-wrap: wrap;
     max-width: 650px;
 }
+
 .nutrition-img .swiper-wrapper {
-    height: 400px;
+    height: 320px;
 }
 
 .nutrition-img .swiper-pagination-bullet {

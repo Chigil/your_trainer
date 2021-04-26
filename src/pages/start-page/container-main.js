@@ -15,73 +15,71 @@ constants:
 */
 import React, {Component} from 'react';
 
-import MenuIcon from "../../menu-nav/menu-icon";
-import HeaderNav from "../../header-nav/header-nav";
-import CalculatePageContent from "./section-calculate/calculate-section";
-import NutritionSectionContent from "./section-nutrition/nutrition-section";
-import LoginSectionContent from "./section-login/login-section";
-import WorkoutSectionContent from "./section-workout/workout-section";
-import LandingSectionContent from "./section-landing/landing-section";
+import MenuIcon from "./menu-nav/menu-icon";
+import HeaderNav from "./header-nav/header-nav";
 
+import {SectionItem} from './SectionItem'
 import './pages.css'
 
 import classnames from 'classnames'
+import {HeaderItem} from "./header-nav/header-item";
+
+
+
 
 export class StartPage extends Component {
 
     constructor(props) {
-        super(props);
-        this.sectionRef = React.createRef();
-        this.state = { clicked:false }
+        super(props)
+        this.listRef = [];
+        this.state = {clicked: false}
         this.handleClick = this.handleClick.bind(this)
         this.sectionClick = this.sectionClick.bind(this)
+        this.currentSection = SectionItem.map(
+            (item) => {
+               const ref = React.createRef()
+               this.listRef.push(ref)
+                return {
+                    ...item,
+                    ref,
+                }
+            }
+        )
     }
-    handleClick(){
-        this.setState(state=>({
+
+    handleClick() {
+        this.setState(state => ({
             clicked: !state.clicked
         }));
-        document.body.style.overflow = this.state.clicked?"unset":"hidden"
+        document.body.style.overflow = this.state.clicked ? "unset" : "hidden"
     }
-    sectionClick(){
-            this.handleClick()
-            if (this.sectionRef && this.sectionRef.current) {
-            this.sectionRef.current.scrollIntoView({behavior: 'smooth'});
+
+    sectionClick(index) {
+        if (this.listRef[index] && this.listRef[index].current) {
+            this.listRef[index].current.scrollIntoView({behavior: 'smooth'});
         }
     }
+
     render() {
         return (
             <div>
-                <div className={classnames("wrapper",{"_lock":this.state.clicked})}>
-                    <MenuIcon  onActive={this.handleClick} clicked={this.state.clicked}/>
+                <div className={classnames("wrapper", {"_lock": this.state.clicked})}>
+                    <MenuIcon onActive={this.handleClick} clicked={this.state.clicked}/>
                     <HeaderNav clicked={this.state.clicked} sectionClick={this.sectionClick}/>
-                    <section className="landing-section page__section_1" ref = {this.sectionRef} >
-                        <div className="landing-section__content">
-                            <LandingSectionContent/>
-                        </div>
-                    </section>
-                    <section className="workouts-section page__section_2" ref = {this.sectionRef}>
-                        <div className="workouts-section__content">
-                            <WorkoutSectionContent/>
-                        </div>
-                    </section>
-                    <section className="nutrition-section page__section_3" ref = {this.sectionRef}>
-                        <div className="nutrition-section__content">
-                            <NutritionSectionContent/>
-                        </div>
-                    </section>
-                    <section className="calculate-section page__section_4" ref = {this.sectionRef}>
-                        <div className="calculate-section__content">
-                            <CalculatePageContent/>
-                        </div>
-                    </section>
-                    <section className="login-section page__section_5" ref = {this.sectionRef}>
-                        <div className="login-section__content">
-                            <LoginSectionContent/>
-                        </div>
-                    </section>
+                    {this.currentSection.map((item, index) => {
+                        return (
+                            <section className={item.cName + "-section"} ref={item.ref}>
+                                <div className={item.cName + "-section__content"}>
+                                    {item.componentSection}
+                                </div>
+                            </section>
+                        )
+                    })}
                 </div>
             </div>
         )
     }
 }
+
+
 
