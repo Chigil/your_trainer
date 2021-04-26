@@ -11,8 +11,8 @@ function App() {
         <BrowserRouter>
             <StartPage/>
             <NavigationBar/>
-            <Route path='/nutrition' component={NutritionPage}/>
-            <Route path='/weight' component={WeightPage}/>
+            <Route path='/nutrition' component={NutritionPage}/>  // create Route to NutritionPage
+            <Route path='/weight' component={WeightPage}/>        // create Route to WeightPage
 
         </BrowserRouter>
     );
