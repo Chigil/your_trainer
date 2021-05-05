@@ -15,9 +15,8 @@ const HeaderNav = (props) => {
                         <li className="header_item">
                             <a
                                 data-goto={".page__section_" + index}
-
                                 className={item.cName}
-                                onClick={props.sectionClick}
+                                onClick={()=>props.sectionClick(index)}
                             >
                                 {item.title}
                             </a>

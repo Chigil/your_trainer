@@ -1,17 +1,35 @@
-import React, {Component} from 'react';
+import React, {Component, useRef, useState} from 'react';
 import push from "../../../img/push.png";
 import squat from "../../../img/squat.png";
 import deadlift from "../../../img/deadlift.png";
 import './calculate-section.css'
 
+const images = [{
+        cName:"calculate-button",
+        name:"push",
+        img:push
+    },
+    {
+        cName:"calculate-button",
+        name:"squat",
+        img:squat
+    },
+    {
+        cName:"calculate-button",
+        name:"deadlift",
+        img:deadlift
+    }]
+
 const CalculateSectionContent = () => {
+    const [img, setImg] = useState(push);
+
     return (
         <React.Fragment>
             <h1>CALCULATE YOUR MAXIMUM</h1>
             <div className="calculate-description">
                 <div className="calculate-panel">
                     <div className="calculate-card">
-                        <img className="imgCalculate" src={push}/>
+                        <img className="imgCalculate" src={img}/>
                         <ul className="calculate-card-list">
                             <li><p>Weight:</p></li>
                             <li><input className="weightCount"/></li>
@@ -28,19 +46,16 @@ const CalculateSectionContent = () => {
                 <div className="calculate-choice">
                     <h2>Know your maximum with basic exercises</h2>
                     <div className="calculate-buttons">
-                        <div className="calculate-button">
-                            <img src={squat}/>
-                            <p>squat</p>
-                        </div>
-                        <div className="calculate-button">
-                            <img src={push}/>
-                            <p>bench press</p>
-                        </div>
-                        <div className="calculate-button">
-                            <img src={deadlift}/>
-                            <p>deadlift</p>
-                        </div>
+                        {images.map((item,index) =>{
+                            return (
+                            <div className={item.cName} onClick={()=>setImg(item.img)}>
+                            <img src={item.img}/>
+                            <p>{item.name}</p>
+                            </div>
+                            )})
+                        }
                     </div>
+
                 </div>
             </div>
         </React.Fragment>
