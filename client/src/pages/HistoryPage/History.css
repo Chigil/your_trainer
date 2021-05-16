@@ -1,0 +1,123 @@
+
+.history__content {
+    margin: 150px auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    width: 800px;
+    height: 700px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.history__content h1 {
+    font-family: Roboto;
+    font-style: normal;
+    height: 40px;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 53px;
+    color: #FFFFFF;
+    letter-spacing: -0.015em;
+}
+
+.history__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.history__fill {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+}
+
+.history__fill h3 {
+    font-size: 30px;
+    margin: 0;
+    line-height: 35px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+
+.fill-date__container {
+    flex-wrap: wrap;
+    display: flex;
+    padding-bottom: 25px;
+}
+
+.fill-date__container .fill-date__header {
+
+    font-size: 35px;
+    line-height: 41px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+
+.fill-date__container .fill-date__input {
+    width: 350px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 20px;
+}
+
+.fill-date__container .fill-date__button{
+
+    margin-left: 20px;
+    width:60px;
+    height:60px;
+}
+
+.history-page__review {
+    flex-wrap: wrap;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 650px;
+    height: 400px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(152, 152, 152, 0.6) 100%);
+    border-radius: 25px;
+    font-size: 35px;
+    line-height: 41px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+
+.history-review__name {
+    display: grid;
+    grid-template-rows: repeat(4, 4fr);
+}
+
+.history-review__content {
+    display: grid;
+    overflow: auto;
+    font-size: 30px;
+    grid-template-rows: repeat(4, 4fr);
+}
+
+.history-review__container {
+
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(152, 152, 152, 0.6) 100%);
+    border-radius: 25px;
+}
+.history-review__header{
+    display:flex;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.history-review__container .history-review__button_delete{
+    width:54px;
+    height:54px;
+}
+.history-review__container .history-review__button_delete img{
+    width:100%;
+    height:100%;
+}

@@ -1,0 +1,173 @@
+.program__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+
+.program__container h1{
+    color:#FFFFFF;
+    font-size: 45px;
+    line-height: 53px;
+    letter-spacing: -0.015em;
+}
+.program__fill {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    min-height: 700px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    margin: 50px;
+
+}
+
+.program__form {
+    width: 350px;
+    display: flex;
+    min-height: 445px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 25px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.program__form h3{
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    margin: 10px auto;
+}
+
+.program__form input {
+    width: 150px;
+    height: 50px;
+    background: #FFFFFF;
+    border-radius: 20px;
+
+}
+
+.program__form .calories__item input {
+    width: 260px;
+    height: 55px;
+    background: #FFFFFF;
+    border-radius: 20px;
+}
+
+.program__form .calories__item h3 {
+    padding-bottom: 15px;
+}
+
+.program__form .form__button_save {
+    width: 140px;
+    height: 50px;
+    margin: 30px auto;
+    background: #821A1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+.weight__form_grid {
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.weight__fill_kg input{
+    width: 200px;
+}
+.weight__fill_number .weight__fill_number__num{
+    text-align: center;
+    align-items: center;
+    width: 63px;
+    height: 55px;
+    background: #740005;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timetable{
+    width: 1080px;
+    height: 700px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.timetable__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 545px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(152, 152, 152, 0.6) 100%);
+    border-radius: 25px;
+}
+
+.timetable h1{
+    padding-bottom: 25px;
+}
+.timetable__nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-end;
+    padding:20px 20px 15px 0;
+}
+
+.timetable__review{
+    width: 945px;
+    height: 480px;
+    display: grid;
+    grid-template-rows: 85px 1fr;
+    background: #740005;
+    border-radius: 25px;
+}
+
+.timetable__review .timetable-review__header{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 15px;
+}
+
+.timetable__nav_left{
+    width:30px;
+    height:30px;
+}
+
+.timetable__nav_right{
+    width:30px;
+    height:30px;
+}
+
+.timetable__review .timetable-review__container{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #C4C4C4;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.exercise-plus{
+    width:50px;
+    height:50px;
+}
