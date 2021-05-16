@@ -11,6 +11,7 @@ import History from "../HistoryPage/History";
 
 
 const GoPage = () => {
+    const isAuth = false
     return (
         <BrowserRouter>
             <div className="go-page">
