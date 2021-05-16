@@ -1,0 +1,15 @@
+.go-page{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 1080px;
+    margin: 0 auto;
+    background-image: url(../../img/go_bg.jpg);
+    background-size: cover;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    box-sizing: border-box;
+    font-size: 25px;
+    line-height: 29px;
+    color:#fff;
+}
