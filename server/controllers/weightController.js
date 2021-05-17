@@ -1,7 +1,7 @@
 const {Weight} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
-class UserController{
+class WeightController{
 
     async create(req,res,next){
         try {
@@ -19,4 +19,4 @@ class UserController{
         return res.json(kg)
     }
 }
-module.exports = new UserController()
+module.exports = new WeightController()
