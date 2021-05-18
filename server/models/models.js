@@ -53,6 +53,9 @@ Weight.belongsTo(User)
 User.hasMany(Record)
 Record.belongsTo(User)
 
+Training.hasMany(Exercise, {as: 'info'})
+Exercise.belongsTo(Training)
+
 Training.hasMany(Exercise)
 Exercise.belongsTo(User)
 

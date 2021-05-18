@@ -1,6 +1,6 @@
 const Router = require('express')
 const router = new Router()
-const weightController = require('../controllers/weightContorller')
+const weightController = require('../controllers/weightController')
 const checkRole = require('../middleware/checkRoleMiddleware')
 
 //Проверка роли для добавления товара
