@@ -8,14 +8,16 @@ class TrainingController{
         try {
             let {date,training_name, exercise_names,userId} = req.body
             console.log({date,training_name,exercise_names,userId})
-            const training = await Training.create({date,training_name,exercise_names,userId})
+            const training = await Training.create({date,training_name,userId})
             if (exercise_names) {
-                exercise_names.forEach(i =>
-                    Exercise.create({
-                        title: i.title,
-                        text: i.text
+                await Promise.all(exercise_names.map((item) => {
+                    return Exercise.create({
+                        title: item.title,
+                        text: item.text,
+                        trainingId: training.id,
+                        userId: userId
                     })
-                )
+                }));
             }
             return res.json(training)
         }
