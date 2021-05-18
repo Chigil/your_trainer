@@ -11,7 +11,7 @@ const User = sequelize.define('user',{
 const Training = sequelize.define('training',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
     date: {type:DataTypes.DATE},
-    exercise_name: {type:DataTypes.STRING},
+    training_name: {type:DataTypes.STRING},
 })
 
 const Exercise = sequelize.define('exercise',{
@@ -53,7 +53,7 @@ Weight.belongsTo(User)
 User.hasMany(Record)
 Record.belongsTo(User)
 
-Training.hasMany(Exercise, {as: 'info'})
+Training.hasMany(Exercise, {as: "exercise_names"})
 Exercise.belongsTo(Training)
 
 Training.hasMany(Exercise)

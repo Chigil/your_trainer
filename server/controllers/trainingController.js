@@ -6,14 +6,12 @@ class TrainingController{
     async create(req,res,next){
 
         try {
-            let {date, info} = req.body
-            console.log({date,info})
-            const training = await Training.create({date})
-            if (info) {
-                info = JSON.parse(info)
-                info.forEach(i =>
+            let {date,training_name, exercise_names,userId} = req.body
+            console.log({date,training_name,exercise_names,userId})
+            const training = await Training.create({date,training_name,exercise_names,userId})
+            if (exercise_names) {
+                exercise_names.forEach(i =>
                     Exercise.create({
-                        id: i.id,
                         title: i.title,
                         text: i.text
                     })
