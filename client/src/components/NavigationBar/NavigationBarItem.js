@@ -35,9 +35,4 @@ export const NavigationBarItem = [
         cName:"cog",
         title:"Settings"
     },
-    {
-        href:"/info",
-        cName:"info-circle",
-        title:"Info"
-    }
 ]
