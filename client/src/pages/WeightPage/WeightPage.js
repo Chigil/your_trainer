@@ -1,6 +1,9 @@
 import "./WeightPage.css"
-import React from "react"
+import React, {useState} from "react"
 import list from "../../svg/list-alt-regular.svg"
+import DatePicker from "../../components/DatePicker";
+
+
 const WeightPage = () => {
     return (
         <div className="weight-page">
@@ -12,8 +15,12 @@ const WeightPage = () => {
                             <div className="wight-date__form">
                                 <h3 className="form__header">Date:</h3>
                                 <div className="form__input">
+                                    <DatePicker/>
                                     <input className="form__input_input"/>
-                                    <div className="form__input_button"><img src={list}/></div>
+                                    <div className="form__input_button">
+
+                                        <img src={list}/>
+                                    </div>
                                 </div>
                             </div>
                             <h3>Name eating:</h3>

@@ -11,12 +11,13 @@ class NutritionController{
         }catch (e){
             next(ApiError.badRequest(e.message))
         }
-
     }
+
     async get(req,res){
         const {date, name_nutrition, calories} =  req.query
         const food = await Nutrition.findAll({where:date, name_nutrition, calories})
         return res.json(food)
     }
 }
+
 module.exports = new NutritionController()

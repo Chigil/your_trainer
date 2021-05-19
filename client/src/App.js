@@ -8,10 +8,11 @@ import {Context} from "./index";
 import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
 
+
+
 const App = observer(()=>{
     const {user} = useContext(Context)
     const [loading, setLoading] = useState(true)
-
     useEffect( ()=>{
         check().then(data=>{
             user.setUser(true)

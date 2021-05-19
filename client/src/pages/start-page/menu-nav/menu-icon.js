@@ -8,8 +8,7 @@ const MenuIcon = (props) =>{
         return (
             <div
                 onClick={props.onActive}
-                className={classnames("menu_icon", {'_active': props.clicked})}
-            >
+                className={classnames("menu_icon", {'_active': props.clicked})}>
                 <span/>
             </div>
         )
