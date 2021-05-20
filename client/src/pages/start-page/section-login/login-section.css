@@ -25,12 +25,10 @@
     font-size: 25px;
     line-height: 31px;
     color: black;
-
 }
 .login-cart button:hover{
     color: #fff;
     background: #740005;
-
 }
 .login-cart input {
     font-size: 22px;

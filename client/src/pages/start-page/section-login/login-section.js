@@ -3,13 +3,14 @@ import './login-section.css'
 import {login, registration} from "../../../http/userAPI";
 import { observer } from "mobx-react-lite"
 import {Context} from "../../../index";
-import {NavLink} from "react-router-dom";
+import {NavLink,useHistory} from "react-router-dom";
 
 
 
 const LoginSectionContent = observer(() => {
     const {user} = useContext(Context)
     const [email,setEmail] = useState('')
+    const history = useHistory()
     const [password,setPassword] = useState('')
     const isLogin = true
     const click= async () =>{
@@ -25,6 +26,7 @@ const LoginSectionContent = observer(() => {
             }
             user.setUser(user)
             user.setIsAuth(true)
+            history.push('/go')
         } catch (e){
             alert(e.response.data.message)
         }

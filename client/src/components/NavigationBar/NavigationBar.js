@@ -2,11 +2,12 @@ import './NavigationBar.css';
 
 import React, {useContext, useState} from "react";
 import {NavigationBarItem} from "./NavigationBarItem"
-import {NavLink} from "react-router-dom";
+import {NavLink,useHistory} from "react-router-dom";
 import {Context} from "../../index";
 
 
 const NavigationBar = (props) => {
+    const history = useHistory()
     // Create Button for Exit from userPage
     const {user} = useContext(Context)
     //const history = useHistory()
@@ -14,6 +15,7 @@ const NavigationBar = (props) => {
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+        history.push('')
     }
     const [toggleState, setToggleState] = useState("");
 
