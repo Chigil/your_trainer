@@ -6,8 +6,7 @@ import {NavLink} from "react-router-dom";
 import {Context} from "../../index";
 
 
-
-const NavigationBar = (props) =>{
+const NavigationBar = (props) => {
     // Create Button for Exit from userPage
     const {user} = useContext(Context)
     //const history = useHistory()
@@ -21,24 +20,30 @@ const NavigationBar = (props) =>{
     function toggle() {
         setToggleState(toggleState === "" ? "active" : "");
     }
-    return(
+
+    return (
         <React.Fragment>
             <div className={`navigation ${toggleState}`}>
                 <ul>
-                    {NavigationBarItem.map((item, index ) => {
-                    return(
-                    <li>
-                        <NavLink to={`/go${item.href}`}>
-                            <span className="icon"><i className={`fa fa-${item.cName}`} aria-hidden="true"/></span>
-                            <span className="title">{item.title}</span>
-                        </NavLink>
-                    </li>
-                    )
-                })}
+                    {NavigationBarItem.map((item, index) => {
+                        return (
+                            <li>
+                                <NavLink to={`/go${item.href}`}>
+                                    <span className="icon"><i className={`fa fa-${item.cName}`}
+                                                              aria-hidden="true"/></span>
+                                    <span className="title">{item.title}</span>
+                                </NavLink>
+                            </li>
+                        )
+                    })}
                     <li>
                         <a>
-                            <span onClick={()=>{logOut()}} className="icon"><i className={`fa fa-sign-out`} aria-hidden="true"/></span>
-                            <span onClick={()=>{logOut()}} className="title">{"Exit"}</span>
+                            <span onClick={() => {
+                                logOut()
+                            }} className="icon"><i className={`fa fa-sign-out`} aria-hidden="true"/></span>
+                            <span onClick={() => {
+                                logOut()
+                            }} className="title">{"Exit"}</span>
                         </a>
                     </li>
                 </ul>

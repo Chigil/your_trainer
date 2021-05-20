@@ -1,7 +1,7 @@
 import "./WeightPage.css"
 import React, {useState} from "react"
 import list from "../../svg/list-alt-regular.svg"
-import DatePicker from "../../components/DatePicker";
+import DatePicker from "../../components/DatePicker/DatePicker";
 
 
 const WeightPage = () => {
@@ -16,11 +16,6 @@ const WeightPage = () => {
                                 <h3 className="form__header">Date:</h3>
                                 <div className="form__input">
                                     <DatePicker/>
-                                    <input className="form__input_input"/>
-                                    <div className="form__input_button">
-
-                                        <img src={list}/>
-                                    </div>
                                 </div>
                             </div>
                             <h3>Name eating:</h3>

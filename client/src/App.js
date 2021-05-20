@@ -9,18 +9,17 @@ import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
 
 
-
-const App = observer(()=>{
+const App = observer(() => {
     const {user} = useContext(Context)
     const [loading, setLoading] = useState(true)
-    useEffect( ()=>{
-        check().then(data=>{
+    useEffect(() => {
+        check().then(data => {
             user.setUser(true)
             user.setIsAuth(true)
-        }).finally(()=> setLoading(false))
-    },[])
+        }).finally(() => setLoading(false))
+    }, [])
 
-    if (loading){
+    if (loading) {
         console.log("hi")
     }
     return (
