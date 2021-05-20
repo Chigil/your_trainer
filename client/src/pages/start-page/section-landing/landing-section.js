@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './landing-section.css'
 import {NavLink} from "react-router-dom";
+import RegistrationModal from "../../../components/RegistrationModal/RegistrationModal";
 
 const LandingSectionContent = () => {
     return(
@@ -12,7 +13,7 @@ const LandingSectionContent = () => {
             <h2 className="intro_description">This is a website with which you can always control
                 your training and
                 nutrition</h2>
-            <button className="intro_button" ><NavLink to={"/go"}>Try Now</NavLink></button>
+            <RegistrationModal/>
         </div>
     )
 }

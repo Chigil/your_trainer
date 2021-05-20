@@ -1,7 +1,7 @@
 import "./WeightPage.css"
 import React, {useState} from "react"
 import list from "../../svg/list-alt-regular.svg"
-import DatePicker from "../../components/DatePicker/DatePicker";
+import DatePicker from "../../components/DatePicker";
 
 
 const WeightPage = () => {
