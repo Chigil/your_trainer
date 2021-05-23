@@ -53,6 +53,7 @@ function DatePicker() {
             <SingleDatePicker
                 date={date} // momentPropTypes.momentObj or null
                 onDateChange={date => setDate(date)} // PropTypes.func.isRequired
+                focused={focused} // PropTypes.bool
                 onFocusChange={onFocusChange}// PropTypes.func.isRequired
                 displayFormat = "YYYY-MM-DD"
                 id="your_unique_id" // PropTypes.string.isRequired,
