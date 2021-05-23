@@ -29,6 +29,7 @@ import {HeaderItem} from "./header-nav/header-item";
 
 
 
+
 export class StartPage extends Component {
 
     constructor(props) {
@@ -65,6 +66,7 @@ export class StartPage extends Component {
 
     render() {
         return (
+
                 <div className={classnames("wrapper", {"_lock": this.state.clicked})}>
                     <MenuIcon onActive={this.handleClick} clicked={this.state.clicked}/>
                     <HeaderNav clicked={this.state.clicked} sectionClick={this.sectionClick}/>
@@ -79,6 +81,7 @@ export class StartPage extends Component {
                         )
                     })}
                 </div>
+
         )
     }
 }

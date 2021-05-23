@@ -1,5 +1,5 @@
 import "./GoPage.css"
-import React from "react"
+import React, {useContext, useEffect} from "react"
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import {BrowserRouter, Route} from "react-router-dom";
 import NutritionPage from "../NutritionPage/NutritionPage";
@@ -8,10 +8,17 @@ import RecordPage from "../RecordPage/RecordPage";
 import ProgramPage from "../ProgramPage/ProgramPage";
 import News from "../News/News";
 import History from "../HistoryPage/History";
+import {observer} from "mobx-react-lite";
+import {getWeight} from "../../http/weightAPI";
+import {Context} from "../../index";
 
 
-const GoPage = () => {
+const GoPage = observer(() => {
     const isAuth = false
+    const {training} = useContext(Context)
+    useEffect(()=>{
+        getWeight().then(data => training.setWeight(data))
+    },[])
     return (
         <BrowserRouter>
             <div className="go-page">
@@ -25,6 +32,6 @@ const GoPage = () => {
             </div>
         </BrowserRouter>
     )
-}
+})
 
 export default GoPage

@@ -1,12 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './App.css';
-import {StartPage} from "./pages/start-page/container-main";
-import {BrowserRouter, Route} from "react-router-dom";
-
-import GoPage from "./pages/GoPage/GoPage";
+import {BrowserRouter} from "react-router-dom";
 import {Context} from "./index";
 import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
+import AppRouter from "./components/AppRouter";
 
 
 const App = observer(() => {
@@ -24,8 +22,7 @@ const App = observer(() => {
     }
     return (
         <BrowserRouter>
-            <Route path='' component={StartPage}/>
-            <Route path='/go' component={GoPage}/>
+            <AppRouter/>
         </BrowserRouter>
     );
 });

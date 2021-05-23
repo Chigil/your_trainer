@@ -1,10 +1,30 @@
 import "./WeightPage.css"
-import React, {useState} from "react"
-import list from "../../svg/list-alt-regular.svg"
+import React, {useContext, useEffect, useState} from "react"
 import DatePicker from "../../components/DatePicker";
+import {observer} from "mobx-react-lite";
+import {Context} from "../../index";
+import ChartsWeight from "../../components/ChartsWeight";
+import {createWeight} from "../../http/weightAPI";
 
 
-const WeightPage = () => {
+
+const WeightPage = observer( () => {
+    const {training} = useContext(Context)
+    const [date,setDate] = useState('')
+    const [weight,setWeight] = useState('')
+
+    const addWeight =  () => {
+        console.log("dwaadwwa")
+        console.log(date)
+        console.log(weight)
+
+        createWeight({date: date},{weight:weight}).then(data => {
+            alert("Добавлено")
+            setDate('')
+            setWeight('')
+        })
+    }
+
     return (
         <div className="weight-page">
             <div className="weight-page__content">
@@ -15,21 +35,30 @@ const WeightPage = () => {
                             <div className="wight-date__form">
                                 <h3 className="form__header">Date:</h3>
                                 <div className="form__input">
-                                    <DatePicker/>
+                                    <DatePicker
+                                        value={date}
+                                        onChange={e=>setDate(e.target.value)}
+                                    />
                                 </div>
                             </div>
-                            <h3>Name eating:</h3>
-                            <input/>
-                            <button className="form__button_save">Save</button>
+                            <h3>Weight in kg:</h3>
+                            <input
+                                value={weight}
+                                onChange={e=>setWeight(e.target.value)}
+                            />
+                            <button
+                                className="form__button_save"
+                                onClick={addWeight}
+                            >Save</button>
                         </div>
                     </div>
                     <div className="weight-page__statistics">
-                        <h1>Statistics</h1>
+                        <ChartsWeight/>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+})
 
 export default WeightPage

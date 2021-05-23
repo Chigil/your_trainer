@@ -13,7 +13,7 @@ const LoginSectionContent = observer(() => {
     const history = useHistory()
     const [password,setPassword] = useState('')
     const isLogin = true
-    const click= async () =>{
+    const click = async () =>{
         try{
             let data;
             if(isLogin){

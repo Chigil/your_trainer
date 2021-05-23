@@ -15,7 +15,7 @@ const NavigationBar = (props) => {
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
-        history.push('')
+        history.push('/')
     }
     const [toggleState, setToggleState] = useState("");
 
@@ -39,13 +39,14 @@ const NavigationBar = (props) => {
                         )
                     })}
                     <li>
-                        <a>
-                            <span onClick={() => {
-                                logOut()
-                            }} className="icon"><i className={`fa fa-sign-out`} aria-hidden="true"/></span>
-                            <span onClick={() => {
-                                logOut()
-                            }} className="title">{"Exit"}</span>
+                        <a><NavLink to={'/'}>
+                                <span onClick={() => {
+                                    logOut()
+                                }} className="icon"><i className={`fa fa-sign-out`} aria-hidden="true"/></span>
+                                <span onClick={() => {
+                                    logOut()
+                                }} className="title">{"Exit"}</span>
+                            </NavLink>
                         </a>
                     </li>
                 </ul>

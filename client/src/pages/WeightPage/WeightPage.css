@@ -101,10 +101,11 @@ h1{
 }
 
 .weight-page__statistics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 900px;
     height: 700px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
 }
