@@ -44,8 +44,7 @@ const StyledDatePickerWrapper = styled.div`
   }
 `;
 
-function DatePicker() {
-    const [date, setDate] = useState(null);
+function DatePicker({date,setDate}) {
     const [focused, setFocused] = useState(false);
     const onFocusChange = () => setFocused(!focused);
     return (

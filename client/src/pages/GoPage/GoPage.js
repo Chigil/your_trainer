@@ -14,7 +14,7 @@ import {Context} from "../../index";
 
 
 const GoPage = observer(() => {
-    const isAuth = false
+    const isAuth = true
     const {training} = useContext(Context)
     useEffect(()=>{
         getWeight().then(data => training.setWeight(data))

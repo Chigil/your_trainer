@@ -1,5 +1,5 @@
 import "./WeightPage.css"
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext, useEffect, useState} from "react";
 import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
@@ -12,13 +12,8 @@ const WeightPage = observer( () => {
     const {training} = useContext(Context)
     const [date,setDate] = useState('')
     const [weight,setWeight] = useState('')
-
     const addWeight =  () => {
-        console.log("dwaadwwa")
-        console.log(date)
-        console.log(weight)
-
-        createWeight({date: date},{weight:weight}).then(data => {
+        createWeight({date: date,weight:weight}).then(data => {
             alert("Добавлено")
             setDate('')
             setWeight('')
@@ -36,9 +31,10 @@ const WeightPage = observer( () => {
                                 <h3 className="form__header">Date:</h3>
                                 <div className="form__input">
                                     <DatePicker
-                                        value={date}
-                                        onChange={e=>setDate(e.target.value)}
-                                    />
+                                        date={date}
+                                        setDate={setDate}
+                                        />
+
                                 </div>
                             </div>
                             <h3>Weight in kg:</h3>
@@ -53,7 +49,9 @@ const WeightPage = observer( () => {
                         </div>
                     </div>
                     <div className="weight-page__statistics">
-                        <ChartsWeight/>
+                        <ChartsWeight
+                            weightData = {training.weights}
+                        />
                     </div>
                 </div>
             </div>

@@ -1,7 +1,15 @@
 import React, {useState} from 'react'
 import {Line} from 'react-chartjs-2'
 
-const ChartsWeight = () =>{
+const ChartsWeight = ({weightData}) =>{
+    let labelDate = []
+    let labelWeight = []
+    weightData.forEach((el)=>{
+        labelDate.push(el.date)
+        console.log(el.date)
+        labelWeight.push(el.weight)
+        console.log(el.weight)
+    })
     return(
         <div style={
             {   backgroundColor:'rgba(255, 255, 255, 0.5)',
@@ -11,12 +19,13 @@ const ChartsWeight = () =>{
             }
         }>
             <Line
+
                 data = {{
-                    labels:["02","03","04","05"],
+                    labels:labelDate,
                     datasets:[
                         {
                             label:"Weight",
-                            data:[99,92,92,76],
+                            data:labelWeight,
                             backgroundColor:'red'
                         },
                     ]
