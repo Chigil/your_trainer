@@ -1,9 +1,12 @@
 import "./RecordPage.css"
-import React from "react"
-import list from "../../svg/list-alt-regular.svg"
+import React, {useState} from "react"
 import trash from "../../svg/trash-alt-solid.svg"
 import arrow from "../../svg/arrow-circle-right-solid.svg"
-const RecordPage = () => {
+import {observer} from "mobx-react-lite";
+import DatePicker from "../../components/DatePicker";
+
+const RecordPage = observer(() => {
+    const [date,setDate] = useState('')
     return (
         <div className="record-page">
             <div className="record-page__content">
@@ -26,8 +29,10 @@ const RecordPage = () => {
                             <div className="record-date__form">
                                 <h3 className="form__header">Date:</h3>
                                 <div className="form__input">
-                                    <input className="form__input_input"/>
-                                    <div className="form__input_button"><img src={list}/></div>
+                                    <DatePicker
+                                        date={date}
+                                        setDate={setDate}
+                                    />
                                 </div>
                             </div>
                             <button className="form__button_save">Add</button>
@@ -58,6 +63,6 @@ const RecordPage = () => {
             </div>
         </div>
     )
-}
+})
 
 export default RecordPage

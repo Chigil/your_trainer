@@ -2,14 +2,13 @@ import "./WeightPage.css"
 import React, {useContext, useEffect, useState} from "react";
 import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
 import ChartsWeight from "../../components/ChartsWeight";
-import {createWeight} from "../../http/weightAPI";
+import {createWeight, getWeight} from "../../http/weightAPI";
 
 
 
 const WeightPage = observer( () => {
-    const {training} = useContext(Context)
+    console.log("observer")
     const [date,setDate] = useState('')
     const [weight,setWeight] = useState('')
     const addWeight =  () => {
@@ -49,9 +48,7 @@ const WeightPage = observer( () => {
                         </div>
                     </div>
                     <div className="weight-page__statistics">
-                        <ChartsWeight
-                            weightData = {training.weights}
-                        />
+                        <ChartsWeight/>
                     </div>
                 </div>
             </div>

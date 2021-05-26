@@ -10,32 +10,43 @@ export default class TrainingStore {
         makeAutoObservable(this)
     }
 
-    setTraining(trainings){
+    setTraining(trainings) {
         this._trainings = trainings
     }
-    setExercise(exercises){
+
+    setExercise(exercises) {
         this._exercises = exercises
     }
-    setNutrition(nutrition){
+
+    setNutrition (nutrition) {
         this._nutrition = nutrition
     }
-    setWeight(weights){
+
+    setWeight(weights) {
         this._weights = weights
     }
-    setRecord(records){
+
+    setRecord(records) {
         this._records = records
     }
-    get exercises(){
-        return this._exercises
-    }
-    get nutrition(){
-        return this._nutrition
-    }
-    get weights(){
-        return this._weights
-    }
-    get records(){
-        return this._records
+
+    get trainings() {
+        return this._trainings
     }
 
+    get exercises() {
+        return this._exercises
+    }
+
+    get nutrition() {
+        return this._nutrition
+    }
+
+    get weights() {
+        return this._weights
+    }
+
+    get records() {
+        return this._records
+    }
 }

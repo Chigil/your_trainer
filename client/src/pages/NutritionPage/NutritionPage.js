@@ -1,10 +1,23 @@
 import "./NutritionPage.css"
-import React from "react"
+import React, {useState} from "react"
 
-import list from "../../svg/list-alt-regular.svg"
-import trash from "../../svg/trash-alt-solid.svg"
+import DatePicker from "../../components/DatePicker";
+import {observer} from "mobx-react-lite";
+import NutritionCalories from "../../components/NutritionCalories";
+import {createNutrition} from "../../http/nutritionApi";
 
-const NutritionPage = () => {
+const NutritionPage = observer(() => {
+    const [date, setDate] = useState('')
+    const [name,setName] = useState('')
+    const [calories,setCalories] = useState('')
+    const addNutrition =  () => {
+        createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
+            alert("Добавлено")
+            setDate('')
+            setName('')
+            setCalories('')
+        })
+    }
     return (
         <React.Fragment>
             <div className="nutrition-page">
@@ -14,21 +27,32 @@ const NutritionPage = () => {
                         <div className="nutrition-page__fill">
                             <h3 className="fill-date__header">Date:</h3>
                             <div className="fill-date__container">
-                                <input className="fill-date__input"/>
-                                <div className="fill-date__button"><img src={list}/></div>
+                                <DatePicker
+                                    date={date}
+                                    setDate={setDate}
+                                />
                             </div>
                             <div className="calories__form">
                                 <ul className="calories__items">
                                     <li className="calories__item">
                                         <h3>Name eating:</h3>
-                                        <input/>
+                                        <input
+                                            value={name}
+                                            onChange={e=>setName(e.target.value)}
+                                        />
                                     </li>
                                     <li className="calories__item">
                                         <h3>Calories:</h3>
-                                        <input/>
+                                        <input
+                                            value={calories}
+                                            onChange={e=>setCalories(e.target.value)}
+                                        />
                                     </li>
                                 </ul>
-                                <button className="calories__button_save">Add</button>
+                                <button
+                                    className="calories__button_save"
+                                    onClick={addNutrition}
+                                >Add</button>
                             </div>
                         </div>
                         <div className="nutrition-page__review">
@@ -41,22 +65,10 @@ const NutritionPage = () => {
                                 </div>
                             </div>
                             <div className="nutrition-review__content">
-                                <div className="nutrition-review__container">
-
-                                    <div className="nutrition-review__header_food-name">
-                                        1 breakfrest
-                                    </div>
-                                    <div className="nutrition-review__calories_number">
-                                        700
-                                    </div>
-
-                                    <div className="nutrition-review__button_delete">
-                                        <img src={trash}/>
-                                    </div>
-                                </div>
-
+                                <NutritionCalories/>
+                                <NutritionCalories/>
+                                <NutritionCalories/>
                             </div>
-
                             <div className="nutrition-review__result">
                                 <div className="nutrition-review__header_total">
                                     Total Calories:
@@ -71,5 +83,5 @@ const NutritionPage = () => {
             </div>
         </React.Fragment>
     )
-}
+})
 export default NutritionPage
