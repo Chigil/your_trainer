@@ -1,23 +1,27 @@
 import "./NutritionPage.css"
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 
 import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
 import NutritionCalories from "../../components/NutritionCalories";
-import {createNutrition} from "../../http/nutritionApi";
+import {createNutrition, getNutrition} from "../../http/nutritionApi";
+import {Context} from "../../index";
 
 const NutritionPage = observer(() => {
+    const {training} = useContext(Context)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
     const [calories,setCalories] = useState('')
     const addNutrition =  () => {
         createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
             alert("Добавлено")
+            getNutrition().then(data => training.setNutrition(data))
             setDate('')
             setName('')
             setCalories('')
         })
     }
+
     return (
         <React.Fragment>
             <div className="nutrition-page">
@@ -65,8 +69,6 @@ const NutritionPage = observer(() => {
                                 </div>
                             </div>
                             <div className="nutrition-review__content">
-                                <NutritionCalories/>
-                                <NutritionCalories/>
                                 <NutritionCalories/>
                             </div>
                             <div className="nutrition-review__result">

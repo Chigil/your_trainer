@@ -4,6 +4,10 @@ export const createNutrition = async (body) =>{
     const {data} = await $authHost.post('api/nutrition',body)
     return data
 }
+export const deleteNutrition = async (body) =>{
+    const {data} = await $authHost.delete('api/nutrition',body)
+    return data
+}
 
 export const getNutrition = async (body) =>{
     const {data} = await $host.get('api/nutrition',body)

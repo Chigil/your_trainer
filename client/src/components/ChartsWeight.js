@@ -14,7 +14,7 @@ const ChartsWeight = observer(() =>{
         console.log(el.weight)
     })
     console.log("observer")
-    return(<div>{labelWeight[-1]}
+    return(<div>
         <div style={
             {   backgroundColor:'rgba(255, 255, 255, 0.5)',
                 height:600,

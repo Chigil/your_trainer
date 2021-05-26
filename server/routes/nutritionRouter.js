@@ -5,5 +5,6 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 
 router.post('/',checkRole('ADMIN'),nutritionController.create)
 router.get('/',nutritionController.get)
+router.delete('/',nutritionController.delete)
 
 module.exports = router

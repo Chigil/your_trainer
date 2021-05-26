@@ -5,6 +5,7 @@ import arrow from "../../svg/arrow-circle-right-solid.svg"
 import {observer} from "mobx-react-lite";
 import DatePicker from "../../components/DatePicker";
 
+
 const RecordPage = observer(() => {
     const [date,setDate] = useState('')
     return (

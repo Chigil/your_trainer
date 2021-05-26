@@ -4,15 +4,17 @@ import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
 import ChartsWeight from "../../components/ChartsWeight";
 import {createWeight, getWeight} from "../../http/weightAPI";
-
+import {Context} from "../../index";
 
 
 const WeightPage = observer( () => {
+    const {training} = useContext(Context)
     console.log("observer")
     const [date,setDate] = useState('')
     const [weight,setWeight] = useState('')
     const addWeight =  () => {
         createWeight({date: date,weight:weight}).then(data => {
+            getWeight().then(data => training.setWeight(data))
             alert("Добавлено")
             setDate('')
             setWeight('')

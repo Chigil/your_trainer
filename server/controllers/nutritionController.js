@@ -18,6 +18,11 @@ class NutritionController{
         const food = await Nutrition.findAll({where:date, name_nutrition, calories})
         return res.json(food)
     }
+    async delete(req,res){
+        const {id} =  req.query
+        const food = await Nutrition.destroy({where:id})
+        return res.json(food)
+    }
 }
 
 module.exports = new NutritionController()
