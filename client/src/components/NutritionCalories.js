@@ -7,13 +7,12 @@ import {deleteNutrition, getNutrition} from "../http/nutritionApi";
 
 const NutritionCalories = observer(() => {
     const {training} = useContext(Context)
-    const [id,setId] = useState('')
-    const delNutrition = () =>{
+    const delNutrition = (id) =>{
         console.log(id)
-        setId(id)
         deleteNutrition({id:id}).then(data=>{
             alert("Deleted")
             getNutrition().then(data => training.removeNutrition(data))
+            getNutrition().then(data => training.setNutrition(data))
         })
     }
     return (<div>
@@ -27,8 +26,7 @@ const NutritionCalories = observer(() => {
                     {nutrition.calories}
                 </div>
                 <div className="nutrition-review__button_delete"
-                     id = {nutrition.id}
-                    onClick={delNutrition}>
+                        onClick={()=>delNutrition(nutrition.id)}>
                     <img src={trash}/>
                 </div>
             </div>
