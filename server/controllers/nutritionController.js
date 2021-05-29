@@ -1,27 +1,33 @@
 const {Nutrition} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
-class NutritionController{
+class NutritionController {
 
-    async create(req,res,next){
+    async create(req, res, next) {
         try {
             const {date, name_nutrition, calories} = req.body
             const food = await Nutrition.create({date, name_nutrition, calories})
             return res.json(food)
-        }catch (e){
+        } catch (e) {
             next(ApiError.badRequest(e.message))
         }
     }
 
-    async get(req,res){
-        const {date, name_nutrition, calories} =  req.query
-        const food = await Nutrition.findAll({where:date, name_nutrition, calories})
+    async get(req, res) {
+        const {date, name_nutrition, calories} = req.query
+        const food = await Nutrition.findAll({where: date, name_nutrition, calories})
         return res.json(food)
     }
-    async delete(req,res){
-        const {id} =  req.query
-        const food = await Nutrition.destroy({where:id})
-        return res.json(food)
+
+    async delete(req, res, next) {
+        try {
+            const {id} = req.params;
+            console.log({id})
+            const food = await Nutrition.destroy({where: {id}})
+            return res.json(food)
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
     }
 }
 

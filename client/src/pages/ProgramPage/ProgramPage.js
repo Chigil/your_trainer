@@ -1,10 +1,22 @@
 import "./ProgramPage.css"
-import React from "react"
+import React, {useState} from "react"
 import arrowRight from "../../svg/arrow-circle-right-solid.svg"
 import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
-
 import plus from "../../svg/plus-circle-solid.svg"
+import AddExercise from "../../components/AddExercise";
+
+
+
 const ProgramPage = () => {
+    const [numExercise,setNumExercise] = useState(0)
+    const children = [];
+    for (let i = 0; i < numExercise; i += 1) {
+        children.push(<AddExercise key={i} number={i} />);
+    };
+
+    const addExerciseForm = () => {
+        setNumExercise(numExercise+1)
+    }
     return (
         <div className="program">
             <div className="program__content">
@@ -14,17 +26,12 @@ const ProgramPage = () => {
                         <div className="program__form">
                             <h3>Name Training:</h3>
                             <input/>
-                            <div className="weight__form_grid">
-                                <div className="weight__fill_kg">
-                                    <h3>exercise:</h3>
-                                    <input/>
-                                </div>
-                                <div className="weight__fill_number">
-                                    <h3>min/kg :</h3>
-                                    <div className="weight__fill_number__num">1</div>
-                                </div>
+                            {children}
+
+                            <div className="exercise-plus"
+                            onClick={()=>addExerciseForm()}>
+                                <img src={plus}/>
                             </div>
-                            <div className="exercise-plus"><img src={plus}/></div>
                             <button className="form__button_save">Save</button>
                         </div>
                     </div>

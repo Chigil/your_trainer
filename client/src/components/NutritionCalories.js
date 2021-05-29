@@ -11,13 +11,14 @@ const NutritionCalories = observer(() => {
         console.log(id)
         deleteNutrition({id:id}).then(data=>{
             alert("Deleted")
-            getNutrition().then(data => training.removeNutrition(data))
-            getNutrition().then(data => training.setNutrition(data))
+            getNutrition().then(data => training.removeNutrition(id))
+
         })
     }
+
     return (<div>
             {training.nutrition.map(nutrition =>
-            <div className="nutrition-review__container"
+                <div className="nutrition-review__container"
                 key={nutrition.id}>
                 <div className="nutrition-review__header_food-name">
                     {nutrition.name_nutrition}

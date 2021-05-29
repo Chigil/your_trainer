@@ -8,11 +8,14 @@ import {createNutrition, getNutrition} from "../../http/nutritionApi";
 import {Context} from "../../index";
 
 const NutritionPage = observer(() => {
+
     const {training} = useContext(Context)
+    let [sumKcal, setSumKcal] = useState(0)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
     const [calories,setCalories] = useState('')
     const addNutrition =  () => {
+        kCalCounter()
         createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
             alert("Добавлено")
             getNutrition().then(data => training.setNutrition(data))
@@ -20,6 +23,10 @@ const NutritionPage = observer(() => {
             setName('')
             setCalories('')
         })
+    }
+    const kCalCounter  = () => {
+        training.nutrition.map(nutrition => sumKcal+=nutrition.calories)
+        console.log(sumKcal)
     }
 
     return (
@@ -76,7 +83,7 @@ const NutritionPage = observer(() => {
                                     Total Calories:
                                 </div>
                                 <div className="nutrition-review__number_total">
-                                    2600
+                                    {sumKcal}
                                 </div>
                             </div>
                         </div>
