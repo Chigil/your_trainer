@@ -35,6 +35,7 @@
 }
 
 .nutrition-page__fill {
+    margin-right: 50px;
     flex-wrap: wrap;
     display: flex;
     flex-direction: column;

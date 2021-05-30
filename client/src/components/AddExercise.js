@@ -1,8 +1,5 @@
 import React, {useState} from "react"
 
-
-
-
 const AddExercise = () => {
     return(
         <div className="weight__form_grid">

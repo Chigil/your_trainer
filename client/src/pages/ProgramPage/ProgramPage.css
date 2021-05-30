@@ -8,6 +8,13 @@
 
 }
 
+.program__name{
+    display: flex;
+    padding-top: 25px;
+}
+.program__name input{
+    margin-left: 15px;
+}
 .program__container h1{
     color:#FFFFFF;
     font-size: 45px;
@@ -30,9 +37,10 @@
 }
 
 .program__form {
+    overflow: auto;
     width: 350px;
     display: flex;
-    min-height: 445px;
+    max-height: 445px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 25px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
@@ -82,6 +90,7 @@
     letter-spacing: -0.015em;
     color: #FFFFFF;
 }
+
 .weight__form_grid {
     flex-wrap: wrap;
     display: grid;
@@ -91,6 +100,11 @@
 .weight__fill_kg input{
     width: 200px;
 }
+.weight__fill_number{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .weight__fill_number .weight__fill_number__num{
     text-align: center;
     align-items: center;
@@ -99,7 +113,6 @@
     background: #740005;
     border-radius: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -168,6 +181,10 @@
 }
 
 .exercise-plus{
+    width:50px;
+    height:50px;
+}
+.exercise-minus{
     width:50px;
     height:50px;
 }
