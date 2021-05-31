@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './landing-section.css'
-import {NavLink} from "react-router-dom";
 import RegistrationModal from "../../../components/RegistrationModal/RegistrationModal";
 
 const LandingSectionContent = () => {

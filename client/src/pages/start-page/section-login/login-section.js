@@ -1,9 +1,9 @@
-import React, {Component, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './login-section.css'
 import {login, registration} from "../../../http/userAPI";
 import { observer } from "mobx-react-lite"
 import {Context} from "../../../index";
-import {NavLink,useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 
 

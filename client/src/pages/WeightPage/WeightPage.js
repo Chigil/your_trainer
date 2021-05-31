@@ -1,5 +1,5 @@
 import "./WeightPage.css"
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext,  useState} from "react";
 import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
 import ChartsWeight from "../../components/ChartsWeight";

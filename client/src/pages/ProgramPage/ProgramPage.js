@@ -12,7 +12,7 @@ const ProgramPage = () => {
 
     for (let i = 0; i < numExercise; i += 1) {
         children.push(<AddExercise key={i} number={i}/>);
-    };
+    }
     const addExerciseForm = () => {
         setNumExercise(numExercise+1)
     }
@@ -33,11 +33,11 @@ const ProgramPage = () => {
                             {children}
                             <div className="exercise-plus"
                             onClick={()=>addExerciseForm()}>
-                                <img src={plus}/>
+                                <img src={plus} alt="image"/>
                             </div>
                             <div className="exercise-minus"
                                  onClick={()=>delExerciseForm()}>
-                                <img src={minus}/>
+                                <img src={minus} alt="image"/>
                             </div>
                             <button className="form__button_save">Save</button>
                         </div>
@@ -47,9 +47,9 @@ const ProgramPage = () => {
                         <h1>Timetable</h1>
                         <div className="timetable__container">
                             <div className="timetable__nav">
-                                <div className="timetable__nav_left"><img src={arrowLeft}/></div>
+                                <div className="timetable__nav_left"><img src={arrowLeft} alt="image"/></div>
                                 <div className="timetable__nav_content">03/30 - 04/04</div>
-                                <div className="timetable__nav_right"><img src={arrowRight}/></div>
+                                <div className="timetable__nav_right"><img src={arrowRight} alt="image"/></div>
                             </div>
                             <div className="timetable__review">
                                 <div className="timetable-review__header">
@@ -62,13 +62,13 @@ const ProgramPage = () => {
                                     <div className="review__header_sun">Sunday 04/04</div>
                                 </div>
                                 <div className="timetable-review__container">
-                                    <div className="review__container_name"></div>
-                                    <div className="review__container_weight"></div>
-                                    <div className="review__container_num/min"></div>
-                                    <div className="review__container_date"></div>
-                                    <div className="review__container_view"></div>
-                                    <div className="review__container_del"></div>
-                                    <div className="review__container_sun"></div>
+                                    <div className="review__container_name">someone</div>
+                                    <div className="review__container_weight">someone</div>
+                                    <div className="review__container_num/min">someone</div>
+                                    <div className="review__container_date">someone</div>
+                                    <div className="review__container_view">someone</div>
+                                    <div className="review__container_del">someone</div>
+                                    <div className="review__container_sun">someone</div>
                                 </div>
                             </div>
                         </div>

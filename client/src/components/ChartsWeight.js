@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import {Line} from 'react-chartjs-2'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -9,11 +9,8 @@ const ChartsWeight = observer(() =>{
     let labelWeight = []
     training.weights.forEach((el)=>{
         labelDate.push(el.date)
-        console.log(el.date)
         labelWeight.push(el.weight)
-        console.log(el.weight)
     })
-    console.log("observer")
     return(<div>
         <div style={
             {   backgroundColor:'rgba(255, 255, 255, 0.5)',

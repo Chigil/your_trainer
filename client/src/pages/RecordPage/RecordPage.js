@@ -1,13 +1,28 @@
 import "./RecordPage.css"
-import React, {useState} from "react"
-import trash from "../../svg/trash-alt-solid.svg"
-import arrow from "../../svg/arrow-circle-right-solid.svg"
+import React, {useContext, useState} from "react"
 import {observer} from "mobx-react-lite";
 import DatePicker from "../../components/DatePicker";
+import AddRecord from "../../components/AddRecord";
+import {createRecord, getRecord} from "../../http/recordApi";
+import {Context} from "../../index";
 
 
 const RecordPage = observer(() => {
+    const {training} = useContext(Context)
+    const [weight,setWeight] = useState('')
+    const [exercise,setExercise] = useState('')
+    const [num,setNum] = useState('')
     const [date,setDate] = useState('')
+    const addRecord =  () => {
+        createRecord({date: date, weight: weight, exercise_name:exercise, num:num}).then(data => {
+            alert("Добавлено")
+            getRecord().then(data => training.setRecord(data))
+            setDate('')
+            setWeight('')
+            setExercise('')
+            setNum('')
+        })
+        }
     return (
         <div className="record-page">
             <div className="record-page__content">
@@ -16,15 +31,24 @@ const RecordPage = observer(() => {
                         <h1>My Record</h1>
                         <div className="record-page__form">
                             <h3>Exercise:</h3>
-                            <input/>
+                            <input
+                                value={exercise}
+                                onChange={e=>setExercise(e.target.value)}
+                            />
                             <div className="weight__form_grid">
                                 <div className="weight__fill_kg">
                                     <h3>Weight :</h3>
-                                    <input/>
+                                    <input
+                                        value={weight}
+                                        onChange={e=>setWeight(e.target.value)}
+                                    />
                                 </div>
                                 <div className="weight__fill_number">
                                     <h3>min/kg :</h3>
-                                    <div className="weight__fill_number__num">1</div>
+                                    <input className="weight__fill_number__num"
+                                           value={num}
+                                           onChange={e=>setNum(e.target.value)}
+                                    />
                                 </div>
                             </div>
                             <div className="record-date__form">
@@ -36,7 +60,10 @@ const RecordPage = observer(() => {
                                     />
                                 </div>
                             </div>
-                            <button className="form__button_save">Add</button>
+                            <button
+                                className="form__button_save"
+                                onClick={addRecord}
+                            >Add</button>
                         </div>
                     </div>
                     <div className="table-record">
@@ -45,19 +72,12 @@ const RecordPage = observer(() => {
                             <div className="review__header">
                                 <div className="review__header_name">Exercise</div>
                                 <div className="review__header_weight">Weight</div>
-                                <div className="review__header_num/min">Date</div>
                                 <div className="review__header_date">Num/min</div>
+                                <div className="review__header_num/min">Date</div>
                                 <div className="review__header_view">View</div>
                                 <div className="review__header_del">Trash</div>
                             </div>
-                            <div className="review__container">
-                                <div className="review__container_name">1</div>
-                                <div className="review__container_weight">1</div>
-                                <div className="review__container_num/min">1</div>
-                                <div className="review__container_date">1</div>
-                                <div className="review__container_view"><img src={arrow}/></div>
-                                <div className="review__container_del"><img src={trash}/></div>
-                            </div>
+                            <AddRecord/>
                         </div>
                     </div>
                 </div>

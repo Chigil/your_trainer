@@ -24,6 +24,9 @@ export default class TrainingStore {
     removeNutrition(id){
         return this._nutrition = this._nutrition.filter(nutrition=>nutrition.id !== id)
     }
+    removeRecord(id){
+        return this._records = this._records.filter(records=>records.id!==id)
+    }
     setWeight(weights) {
         this._weights = weights
     }

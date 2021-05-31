@@ -12,14 +12,15 @@ import {observer} from "mobx-react-lite";
 import {getWeight} from "../../http/weightAPI";
 import {Context} from "../../index";
 import {getNutrition} from "../../http/nutritionApi";
+import {getRecord} from "../../http/recordApi";
 
 
 const GoPage = observer(() => {
-    const isAuth = true
     const {training} = useContext(Context)
     useEffect(()=>{
         getWeight().then(data => training.setWeight(data))
         getNutrition().then(data => training.setNutrition(data))
+        getRecord().then(data => training.setRecord(data))
     },[])
     return (
         <BrowserRouter>

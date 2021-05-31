@@ -22,7 +22,6 @@ class NutritionController {
     async delete(req, res, next) {
         try {
             const {id} = req.params;
-            console.log({id})
             const food = await Nutrition.destroy({where: {id}})
             return res.json(food)
         } catch (e) {
