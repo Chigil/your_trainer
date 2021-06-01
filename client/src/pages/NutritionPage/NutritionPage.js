@@ -7,15 +7,14 @@ import NutritionCalories from "../../components/NutritionCalories";
 import {createNutrition, getNutrition} from "../../http/nutritionApi";
 import {Context} from "../../index";
 
-const NutritionPage = observer(() => {
 
+const NutritionPage = observer(() => {
     const {training} = useContext(Context)
-    let [sumKcal, setSumKcal] = useState(0)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
     const [calories,setCalories] = useState('')
+    const calorieTotal = Object.values(training.nutrition).reduce((totalCalories, nutrition) => totalCalories + nutrition.calories, 0);
     const addNutrition =  () => {
-        kCalCounter()
         createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
             alert("Добавлено")
             getNutrition().then(data => training.setNutrition(data))
@@ -24,10 +23,7 @@ const NutritionPage = observer(() => {
             setCalories('')
         })
     }
-    const kCalCounter  = () => {
-        training.nutrition.map(nutrition => sumKcal+=nutrition.calories)
-        console.log(sumKcal)
-    }
+
 
     return (
         <React.Fragment>
@@ -83,7 +79,7 @@ const NutritionPage = observer(() => {
                                     Total Calories:
                                 </div>
                                 <div className="nutrition-review__number_total">
-                                    {sumKcal}
+                                    {calorieTotal}
                                 </div>
                             </div>
                         </div>
