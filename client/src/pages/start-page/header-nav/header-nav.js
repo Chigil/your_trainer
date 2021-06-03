@@ -4,6 +4,8 @@ import classnames from 'classnames'
 import {HeaderItem} from './header-item'
 
 import './header-nav.css';
+import LoginModal from "../../../components/LoginModal/LoginModal";
+
 
 
 const HeaderNav = (props) => {
@@ -23,6 +25,11 @@ const HeaderNav = (props) => {
                         </li>
                     )
                 })}
+                    <li className="header_item">
+                        <a>
+                           <LoginModal/>
+                        </a>
+                    </li>
             </ul>
         </nav>
     )

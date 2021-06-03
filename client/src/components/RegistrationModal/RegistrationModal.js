@@ -1,5 +1,4 @@
 import React, {useCallback, useState} from 'react';
-import ReactDOM from 'react-dom';
 import '../../pages/start-page/section-landing/landing-section.css'
 import './RegistrationModal.css'
 import Modal from 'react-modal';
@@ -49,9 +48,7 @@ function RegistrationModal() {
                 <input/>
                 <p>Enter You Password</p>
                 <input/>
-                <form>
-                    <button className="register">Register</button>
-                </form>
+                <button className="register">Register</button>
             </Modal>
         </div>
     );
