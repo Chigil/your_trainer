@@ -3,8 +3,9 @@ import './LoginModal.css'
 import {login, registration} from "../../http/userAPI";
 import { observer } from "mobx-react-lite"
 import {Context} from "../../index";
-import {useHistory} from "react-router-dom";
+import {NavLink,useLocation, useHistory} from "react-router-dom";
 import Modal from "react-modal";
+import {APP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, START_ROUTE} from "../../utils/consts";
 
 const customStyles = {
     overlay: {
@@ -24,16 +25,17 @@ const customStyles = {
         transform             : 'translate(-50%, -50%)',
         fontSize              : '22px',
         width: '350px',
-        height: '450px',
+        height: '520px',
         borderRadius: '15px'
     }};
 
 const LoginModal = observer(() => {
+    const location = useLocation()
     const {user} = useContext(Context)
     const [email,setEmail] = useState('')
     const history = useHistory()
     const [password,setPassword] = useState('')
-    const isLogin = true
+    const isLogin = location.pathname === START_ROUTE+LOGIN_ROUTE
     const click = async () =>{
         try{
             let data;
@@ -47,7 +49,7 @@ const LoginModal = observer(() => {
             }
             user.setUser(user)
             user.setIsAuth(true)
-            history.push('/go')
+            history.push(APP_ROUTE)
         } catch (e){
             alert(e.response.data.message)
         }
@@ -59,7 +61,7 @@ const LoginModal = observer(() => {
     const afterOpenModal = () =>{subtitle.style.color = '#740005';}
     return (
         <React.Fragment>
-            <a className="header_link" onClick={openModal}>Login</a>
+            <a className="header_link" onClick={openModal}>Join</a>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -68,19 +70,28 @@ const LoginModal = observer(() => {
                 contentLabel="Example Modal"
             >
                 <button className="close" onClick={closeModal}>X</button>
-                <h2 ref={_subtitle => (subtitle = _subtitle)}>Login Your Account</h2>
-                <p>Enter You Email</p>
+                <h2 ref={_subtitle => (subtitle = _subtitle)}>{isLogin? "Login Your Account":"Register Your Account"}</h2>
+                <p>Enter Your Email</p>
                 <input
                     value={email}
                     onChange={e=>setEmail(e.target.value)}
                 />
-                <p>Enter You Password</p>
+                <p>Enter Your Password</p>
                 <input
                     value={password}
                     onChange={e=>setPassword(e.target.value)}
                     type="password"
                 />
-                <button className="register" onClick={click}>Login</button>
+                {isLogin ?
+                    <div>
+                        Don't have an account? <NavLink to={START_ROUTE+REGISTRATION_ROUTE}> Register now! </NavLink>
+                    </div>
+                    :
+                    <div>
+                        Have an account? <NavLink to={START_ROUTE+LOGIN_ROUTE}> Login! </NavLink>
+                    </div>
+                }
+                <button className="register" onClick={click}>{isLogin? "Login":"Register"}</button>
             </Modal>
         </React.Fragment>
     )

@@ -1,6 +1,8 @@
 import React from 'react';
 import './landing-section.css'
-import RegistrationModal from "../../../components/RegistrationModal/RegistrationModal";
+import {REGISTRATION_ROUTE} from "../../../utils/consts";
+import {NavLink} from "react-router-dom";
+import LoginModal from "../../../components/LoginModal/LoginModal";
 
 const LandingSectionContent = () => {
     return(
@@ -12,7 +14,7 @@ const LandingSectionContent = () => {
             <h2 className="intro_description">This is a website with which you can always control
                 your training and
                 nutrition</h2>
-            <RegistrationModal/>
+            <button className="intro_button"> <LoginModal/></button>
         </div>
     )
 }

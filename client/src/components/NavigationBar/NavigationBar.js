@@ -4,6 +4,7 @@ import React, {useContext, useState} from "react";
 import {NavigationBarItem} from "./NavigationBarItem"
 import {NavLink,useHistory} from "react-router-dom";
 import {Context} from "../../index";
+import {APP_ROUTE, START_ROUTE} from "../../utils/consts";
 
 
 const NavigationBar = (props) => {
@@ -15,7 +16,8 @@ const NavigationBar = (props) => {
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
-        history.push('/')
+        history.push(START_ROUTE)
+        window.location.reload();
     }
     const [toggleState, setToggleState] = useState("");
 
@@ -30,7 +32,7 @@ const NavigationBar = (props) => {
                     {NavigationBarItem.map((item, index) => {
                         return (
                             <li>
-                                <NavLink to={`/go${item.href}`}>
+                                <NavLink to={`${APP_ROUTE}${item.href}`}>
                                     <span className="icon"><i className={`fa fa-${item.cName}`}
                                                               aria-hidden="true"/></span>
                                     <span className="title">{item.title}</span>

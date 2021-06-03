@@ -5,7 +5,6 @@
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
-
 }
 
 .program__name{
@@ -17,7 +16,7 @@
 }
 .program__container h1{
     color:#FFFFFF;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 53px;
     letter-spacing: -0.015em;
 }
@@ -25,8 +24,8 @@
     flex-wrap: wrap;
     display: flex;
     flex-direction: column;
-    width: 450px;
-    min-height: 700px;
+    width: 420px;
+    min-height: 600px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     justify-content: flex-start;
@@ -52,8 +51,8 @@
 }
 
 .program__form h3{
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 26px;
     letter-spacing: -0.015em;
     color: #FFFFFF;
     margin: 10px auto;
@@ -83,9 +82,9 @@
     height: 50px;
     margin: 30px auto;
     background: #821A1E;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 28px;
     letter-spacing: -0.015em;
     color: #FFFFFF;
@@ -117,8 +116,8 @@
 }
 
 .timetable{
-    width: 1080px;
-    height: 700px;
+    width: 1050px;
+    height: 600px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     display: flex;
@@ -177,7 +176,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background: #C4C4C4;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0 0 20px 20px;
 }
 
 .exercise-plus{
