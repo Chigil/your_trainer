@@ -14,10 +14,6 @@
     padding-left: 0;
 }
 
-.nutrition-page__content li {
-    list-style-type: none;
-    margin: 25px auto;
-}
 
 .nutrition-page__content h1 {
     font-family: Roboto;
@@ -94,7 +90,7 @@
 }
 
 .calories__form .calories__item h3 {
-    padding-bottom: 15px;
+    padding: 25px 0;
 }
 
 .calories__form .calories__button_save {
@@ -106,6 +102,7 @@
     font-size: 22px;
     line-height: 28px;
     letter-spacing: -0.015em;
+    margin-top: 25px;
     color: #FFFFFF;
 }
 

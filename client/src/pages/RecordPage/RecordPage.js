@@ -77,7 +77,9 @@ const RecordPage = observer(() => {
                                 <div className="review__header_view">View</div>
                                 <div className="review__header_del">Trash</div>
                             </div>
+                            <div>
                             <AddRecord/>
+                            </div>
                         </div>
                     </div>
                 </div>

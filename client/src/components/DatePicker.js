@@ -9,9 +9,9 @@ const StyledDatePickerWrapper = styled.div`
   .SingleDatePickerInput {
     .DateInput {
       width: 280px;
-      height: 60px;
+      height: 55px;
       border: 2px solid #000000;
-      border-radius: 15px;
+      border-radius: 20px;
       display: flex;
 
       :hover {
@@ -23,13 +23,13 @@ const StyledDatePickerWrapper = styled.div`
         height: 100%;
         font-size: 22px;
         box-sizing: border-box;
-        border-radius: 15px;
+        border-radius: 20px;
         background-color: rgba(0, 0, 0, 0);
       }
     }
 
     .SingleDatePickerInput__withBorder {
-      border-radius: 15px;
+      border-radius: 20px;
       border: none;
     }
 
