@@ -5,13 +5,15 @@ import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
 import minus from "../../svg/minus-circle-solid.svg"
 import plus from "../../svg/plus-circle-solid.svg"
 import AddExercise from "../../components/AddExercise";
+import ExercisesModal from "../../components/ExersicesModal/ExecisesModal";
+import ExerciseData from "../../components/ExerciseData";
 
 const ProgramPage = () => {
     const [numExercise,setNumExercise] = useState(0)
     const children = [];
 
     for (let i = 0; i < numExercise; i += 1) {
-        children.push(<AddExercise key={i} number={i}/>);
+        children.push(<ExerciseData key={i} number={i}/>);
     }
     const addExerciseForm = () => {
         setNumExercise(numExercise+1)
@@ -31,9 +33,8 @@ const ProgramPage = () => {
                                 <input/>
                             </div>
                             {children}
-                            <div className="exercise-plus"
-                            onClick={()=>addExerciseForm()}>
-                                <img src={plus} alt="image"/>
+                            <div className="exercise-plus">
+                                <ExercisesModal/>
                             </div>
                             <div className="exercise-minus"
                                  onClick={()=>delExerciseForm()}>
