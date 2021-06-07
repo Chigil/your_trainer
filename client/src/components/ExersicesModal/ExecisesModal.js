@@ -3,7 +3,6 @@ import './ExercisesModal.css'
 import { observer } from "mobx-react-lite"
 import Modal from "react-modal";
 import plus from "../../svg/plus-circle-solid.svg";
-import AddExercise from "../AddExercise";
 import ExerciseData from "../ExerciseData";
 
 
@@ -32,6 +31,8 @@ const customStyles = {
 const ExercisesModal = observer(() => {
     let subtitle;
     const [num,setNum] = useState(0)
+    const [name,setName] = useState('')
+    const [data,setData] = useState('')
     const [modalIsOpen, setIsOpen] = useState(false);
     const openModal = useCallback(() => setIsOpen(true), []);
     const closeModal = useCallback(() => setIsOpen(false), []);
@@ -39,7 +40,7 @@ const ExercisesModal = observer(() => {
     const children = [];
 
     for (let i = 0; i < num; i += 1) {
-        children.push(<ExerciseData key={i} number={i}/>);
+        children.push(<ExerciseData data={data} setData={setData} key={i} number={i}/>);
     }
     return (
         <React.Fragment>
@@ -57,7 +58,10 @@ const ExercisesModal = observer(() => {
                     <div className="wrapper-exercise_name">
                         <div>
                             <p>Exercise name</p>
-                            <input className="exercise-name_input"/>
+                            <input className="exercise-name_input"
+                                   value = {name}
+                                   onChange={e=>setName(e.target.value)}
+                            />
                         </div>
                         <div>
                             <p>num</p>

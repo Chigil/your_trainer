@@ -5,7 +5,7 @@ export const createNutrition = async (body) =>{
     return data
 }
 export const deleteNutrition = async (id) =>{
-    const {data} = await $authHost.delete('api/nutrition/'+id.id)
+    const {data} = await $authHost.delete(`api/nutrition/${id.id}`)
     return data
 }
 

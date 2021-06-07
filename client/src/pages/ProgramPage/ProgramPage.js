@@ -1,25 +1,25 @@
 import "./ProgramPage.css"
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import arrowRight from "../../svg/arrow-circle-right-solid.svg"
 import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
 import minus from "../../svg/minus-circle-solid.svg"
-import plus from "../../svg/plus-circle-solid.svg"
-import AddExercise from "../../components/AddExercise";
 import ExercisesModal from "../../components/ExersicesModal/ExecisesModal";
-import ExerciseData from "../../components/ExerciseData";
+import {createTraining, getTraining} from "../../http/trainingApi";
+import DatePicker from "../../components/DatePicker";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const ProgramPage = () => {
-    const [numExercise,setNumExercise] = useState(0)
-    const children = [];
-
-    for (let i = 0; i < numExercise; i += 1) {
-        children.push(<ExerciseData key={i} number={i}/>);
-    }
-    const addExerciseForm = () => {
-        setNumExercise(numExercise+1)
-    }
-    const delExerciseForm = () =>{
-        setNumExercise(numExercise-1)
+const ProgramPage = observer(() => {
+    const {training} = useContext(Context)
+    const [date,setDate] = useState('')
+    const [name,setName] = useState('')
+    const addTraining =  () => {
+        createTraining({date: date,name:name}).then(data => {
+            getTraining().then(data => training.setTraining(data))
+            alert("Добавлено")
+            setDate('')
+            setName('')
+        })
     }
     return (
         <div className="program">
@@ -28,19 +28,29 @@ const ProgramPage = () => {
                     <div className="program__fill">
                         <h1>My Program</h1>
                         <div className="program__form">
+                            <DatePicker
+                                date={date}
+                                setDate={setDate}
+                            />
                             <div className="program__name">
                                 <h3>Name Training:</h3>
-                                <input/>
+                                <input
+                                    value={name}
+                                    onChange={e=>setName(e.target.value)}
+                                />
                             </div>
-                            {children}
                             <div className="exercise-plus">
-                                <ExercisesModal/>
+                                <ExercisesModal />
                             </div>
-                            <div className="exercise-minus"
-                                 onClick={()=>delExerciseForm()}>
+                            <div className="exercise-minus">
                                 <img src={minus} alt="image"/>
                             </div>
-                            <button className="form__button_save">Save</button>
+                            <button
+                                className="form__button_save"
+                                onClick={addTraining}
+                            >
+                                Save
+                            </button>
                         </div>
                     </div>
                     <div className="timetable">
@@ -78,6 +88,6 @@ const ProgramPage = () => {
             </div>
         </div>
     )
-}
+})
 
 export default ProgramPage

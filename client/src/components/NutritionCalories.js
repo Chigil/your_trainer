@@ -3,7 +3,7 @@ import {useContext} from "react";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {deleteNutrition, getNutrition} from "../http/nutritionApi";
-
+//Использовать get (Избивиться от фильтра)
 
 const NutritionCalories = observer(() => {
     const {training} = useContext(Context)
