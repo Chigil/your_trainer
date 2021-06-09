@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
 import classnames from 'classnames'
 
 import {HeaderItem} from './header-item'
 
 import './header-nav.css';
 import LoginModal from "../../../components/LoginModal/LoginModal";
+import MyModal from "../../../components/MyModal";
+import {Context} from "../../../index";
 
 
 
 const HeaderNav = (props) => {
+    const {modal} = useContext(Context)
     return (
         <nav className={classnames("header_nav", {"_active": props.clicked})}>
             <ul className="header_list ">
@@ -26,8 +29,9 @@ const HeaderNav = (props) => {
                     )
                 })}
                     <li className="header_item">
-                        <a>
-                           <LoginModal/>
+                        <a
+                            onClick={()=>modal.openModal("LoginModal")}
+                        >Login
                         </a>
                     </li>
             </ul>

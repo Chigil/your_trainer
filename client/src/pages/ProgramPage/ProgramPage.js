@@ -1,5 +1,5 @@
 import "./ProgramPage.css"
-import React, {useContext, useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import arrowRight from "../../svg/arrow-circle-right-solid.svg"
 import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
 import minus from "../../svg/minus-circle-solid.svg"
@@ -8,11 +8,13 @@ import {createTraining, getTraining} from "../../http/trainingApi";
 import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import plus from "../../svg/plus-circle-solid.svg";
 
 const ProgramPage = observer(() => {
-    const {training} = useContext(Context)
+    const {training,modal} = useContext(Context)
     const [date,setDate] = useState('')
     const [name,setName] = useState('')
+    const [nameExercise,setNameExercise] = useState('')
     const addTraining =  () => {
         createTraining({date: date,name:name}).then(data => {
             getTraining().then(data => training.setTraining(data))
@@ -21,6 +23,16 @@ const ProgramPage = observer(() => {
             setName('')
         })
     }
+    console.log("EXERCISE_NEW",training._newExercise)
+    useEffect(() => {
+        console.log("dadad")
+        const newExercise = training._newExercise
+        if (training._newExercise.name) {
+            console.log("name",training._newExercise.name)
+            console.log("data",training._newExercise.data)
+        }
+    })
+
     return (
         <div className="program">
             <div className="program__content">
@@ -39,8 +51,12 @@ const ProgramPage = observer(() => {
                                     onChange={e=>setName(e.target.value)}
                                 />
                             </div>
+
+                            <div>
+
+                            </div>
                             <div className="exercise-plus">
-                                <ExercisesModal />
+                                <img src={plus} alt="image" className="header_link" onClick={()=>modal.openModal('ExercisesModal')}/>
                             </div>
                             <div className="exercise-minus">
                                 <img src={minus} alt="image"/>

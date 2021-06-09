@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './landing-section.css'
-import {REGISTRATION_ROUTE} from "../../../utils/consts";
-import {NavLink} from "react-router-dom";
-import LoginModal from "../../../components/LoginModal/LoginModal";
+import {Context} from "../../../index";
+import {observer} from "mobx-react-lite";
 
-const LandingSectionContent = () => {
+
+
+const LandingSectionContent = observer(() => {
+    const {modal} = useContext(Context)
     return(
         <div className="intro">
             <h1 className="intro_header">
@@ -14,10 +16,10 @@ const LandingSectionContent = () => {
             <h2 className="intro_description">This is a website with which you can always control
                 your training and
                 nutrition</h2>
-            <button className="intro_button"> <LoginModal/></button>
+            <button onClick={()=>modal.openModal("LoginModal")}>click!</button>
         </div>
     )
-}
+})
 export default LandingSectionContent;
 
 

@@ -1,12 +1,14 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 
-const ExerciseData = observer( ({data,setData}) => {
+
+const ExerciseData = observer( ({setData,number}) => {
     const [kg,setKg] = useState(0)
     const [num,setNum] = useState(0)
-    const text = {kg,num}
+    useEffect(() => {
+        setData(number,{kg,num})
+    }, [kg,num])
 
-    console.log(text)
     return(
     <div className="exercise-data_content">
         <div>

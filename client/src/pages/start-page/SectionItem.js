@@ -3,7 +3,7 @@ import WorkoutSectionContent from "./section-workout/workout-section";
 import NutritionSectionContent from "./section-nutrition/nutrition-section";
 import CalculatePageContent from "./section-calculate/calculate-section";
 import React from "react";
-import LoginModal from "../../components/LoginModal/LoginModal";
+
 
 export const SectionItem = [
     {

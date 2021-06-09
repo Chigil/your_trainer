@@ -5,6 +5,7 @@ import {Context} from "./index";
 import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
 import AppRouter from "./components/AppRouter";
+import MyModal from "./components/MyModal";
 
 
 const App = observer(() => {
@@ -22,6 +23,7 @@ const App = observer(() => {
     }
     return (
         <BrowserRouter>
+           <MyModal/>
             <AppRouter/>
         </BrowserRouter>
     );
