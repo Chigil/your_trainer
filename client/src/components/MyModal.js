@@ -30,7 +30,7 @@ const MyModal = observer(() => {
             marginRight           : '-50%',
             transform             : 'translate(-50%, -50%)',
             fontSize              : '22px',
-            width: '350px',
+            width: '335px',
             height: '520px',
             borderRadius: '15px'
         }};
@@ -52,18 +52,9 @@ const MyModal = observer(() => {
                     style={customStyles}
                     ariaHideApp={false}
                 >
-
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            Никита
-                        </div>
+                    <div>
                         <div className="modal-body">
                             <CurrentModal onCloseModal={handleCloseModal}/>
-                        </div>
-                        <div className="modal-footer">
-                            <button onClick={()=>modal.closeModal()}>
-                                Лошара
-                            </button>
                         </div>
                     </div>
                 </Modal>
@@ -75,3 +66,16 @@ const MyModal = observer(() => {
 
 
 export default MyModal
+
+/*
+<div className="modal-content">
+                        <div className="modal-header">
+                            Описание
+                        </div>
+
+ <div className="modal-footer">
+                            <button onClick={()=>modal.closeModal()}>
+                                Закрыть
+                            </button>
+                        </div>
+ */

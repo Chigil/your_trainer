@@ -36,7 +36,7 @@ const LoginModal = observer(({onCloseModal}) => {
         <React.Fragment>
             <a className="header_link">Join</a>
                 <button className="close" onClick={onCloseModal}>X</button>
-                <h2>{isLogin? "Login Your Account":"Register Your Account"}</h2>
+                <h3>{isLogin? "Login Your Account":"Register Your Account"}</h3>
                 <p>Enter Your Email</p>
                 <input
                     value={email}

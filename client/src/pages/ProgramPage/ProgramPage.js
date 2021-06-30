@@ -9,12 +9,15 @@ import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import plus from "../../svg/plus-circle-solid.svg";
+const dataExercises = []
 
 const ProgramPage = observer(() => {
     const {training,modal} = useContext(Context)
     const [date,setDate] = useState('')
     const [name,setName] = useState('')
     const [nameExercise,setNameExercise] = useState('')
+    const [infoExercise,setInfoExercise] = useState('')
+
     const addTraining =  () => {
         createTraining({date: date,name:name}).then(data => {
             getTraining().then(data => training.setTraining(data))
@@ -23,13 +26,12 @@ const ProgramPage = observer(() => {
             setName('')
         })
     }
-    console.log("EXERCISE_NEW",training._newExercise)
     useEffect(() => {
-        console.log("dadad")
-        const newExercise = training._newExercise
         if (training._newExercise.name) {
-            console.log("name",training._newExercise.name)
-            console.log("data",training._newExercise.data)
+            setNameExercise(training._newExercise.name)
+            setInfoExercise(JSON.stringify(training._newExercise.data))
+            dataExercises.push({[nameExercise]:infoExercise})
+            console.log(dataExercises)
         }
     })
 
@@ -51,9 +53,9 @@ const ProgramPage = observer(() => {
                                     onChange={e=>setName(e.target.value)}
                                 />
                             </div>
-
                             <div>
-
+                                {nameExercise}
+                                {infoExercise}
                             </div>
                             <div className="exercise-plus">
                                 <img src={plus} alt="image" className="header_link" onClick={()=>modal.openModal('ExercisesModal')}/>

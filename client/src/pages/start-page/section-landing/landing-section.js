@@ -16,7 +16,7 @@ const LandingSectionContent = observer(() => {
             <h2 className="intro_description">This is a website with which you can always control
                 your training and
                 nutrition</h2>
-            <button onClick={()=>modal.openModal("LoginModal")}>click!</button>
+            <button className="intro_button" onClick={()=>modal.openModal("LoginModal")}>Try Now</button>
         </div>
     )
 })

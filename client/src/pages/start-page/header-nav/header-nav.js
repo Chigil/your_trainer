@@ -29,7 +29,7 @@ const HeaderNav = (props) => {
                     )
                 })}
                     <li className="header_item">
-                        <a
+                        <a className="header_link"
                             onClick={()=>modal.openModal("LoginModal")}
                         >Login
                         </a>
