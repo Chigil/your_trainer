@@ -10,9 +10,11 @@ export default class TrainingStore {
         this._records = []
         makeAutoObservable(this)
     }
-    setNewExercise(exercise){
+
+    setNewExercise(exercise) {
         this._newExercise = exercise
     }
+
     setTraining(trainings) {
         this._trainings = trainings
     }
@@ -21,17 +23,18 @@ export default class TrainingStore {
         this._exercises = exercises
     }
 
-    setNutrition (nutrition) {
+    setNutrition(nutrition) {
         this._nutrition = nutrition
     }
 
-    removeNutrition(id){
-        return this._nutrition = this._nutrition.filter(nutrition=>nutrition.id !== id)
+    removeNutrition(id) {
+        return this._nutrition = this._nutrition.filter(nutrition => nutrition.id !== id)
     }
 
-    removeRecord(id){
-        return this._records = this._records.filter(records=>records.id!==id)
+    removeRecord(id) {
+        return this._records = this._records.filter(records => records.id !== id)
     }
+
     setWeight(weights) {
         this._weights = weights
     }
@@ -39,9 +42,11 @@ export default class TrainingStore {
     setRecord(records) {
         this._records = records
     }
-    get newExercise(){
+
+    get newExercise() {
         return this._newExercise
     }
+
     get trainings() {
         return this._trainings
     }

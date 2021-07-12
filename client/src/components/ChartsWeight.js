@@ -8,7 +8,8 @@ const ChartsWeight = observer(() =>{
     let labelDate = []
     let labelWeight = []
     training.weights.forEach((el)=>{
-        labelDate.push(el.date)
+        let date = new Date(el.date)
+        labelDate.push(date.toLocaleDateString())
         labelWeight.push(el.weight)
     })
     return(<div>

@@ -1,9 +1,12 @@
 import "./News.css"
-import React from "react"
+import React, {useContext} from "react"
+import {Context} from "../../index";
 
 const News = () => {
+    const {snackBar} = useContext(Context)
     return (
         <div className="news">
+
             <div className="news__content">
                 <h1>Name</h1>
                 <h1>Franko</h1>
@@ -24,8 +27,10 @@ const News = () => {
                             <div className="review__header_record">Record:</div>
                         </div>
                     </div>
-                    <div className="review__news">
-                        addawdawdadawdawdawdawdawdaw
+                    <div className="review__news"
+                           onClick={()=>snackBar.openSnackBar("error","Incorrect Email")}
+                         >
+                        Login
                     </div>
                 </div>
             </div>

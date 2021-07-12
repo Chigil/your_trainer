@@ -6,6 +6,7 @@ import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
 import AppRouter from "./components/AppRouter";
 import MyModal from "./components/MyModal";
+import CustomizedSnackbars from "./components/Snackbar";
 
 
 const App = observer(() => {
@@ -24,6 +25,7 @@ const App = observer(() => {
     return (
         <BrowserRouter>
            <MyModal/>
+            <CustomizedSnackbars/>
             <AppRouter/>
         </BrowserRouter>
     );

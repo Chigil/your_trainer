@@ -54,7 +54,7 @@ function DatePicker({date,setDate}) {
                 onDateChange={date => setDate(date)} // PropTypes.func.isRequired
                 focused={focused} // PropTypes.bool
                 onFocusChange={onFocusChange}// PropTypes.func.isRequired
-                displayFormat = "YYYY-MM-DD"
+                displayFormat = "DD MMMM, yyyy"
                 id="your_unique_id" // PropTypes.string.isRequired,
             />
         </StyledDatePickerWrapper>

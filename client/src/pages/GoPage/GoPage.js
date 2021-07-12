@@ -13,6 +13,7 @@ import {getWeight} from "../../http/weightAPI";
 import {Context} from "../../index";
 import {getNutrition} from "../../http/nutritionApi";
 import {getRecord} from "../../http/recordApi";
+import {getNewExercise} from "../../http/newExercisesApi";
 
 
 const GoPage = observer(() => {
@@ -21,6 +22,7 @@ const GoPage = observer(() => {
         getWeight().then(data => training.setWeight(data))
         getNutrition().then(data => training.setNutrition(data))
         getRecord().then(data => training.setRecord(data))
+        getNewExercise().then(data => training.setNewExercise(data))
     },[])
     return (
         <BrowserRouter>

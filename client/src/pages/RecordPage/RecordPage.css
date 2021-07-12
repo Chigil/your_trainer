@@ -145,20 +145,18 @@
 .review__container{
     border: 2px solid #ffffff;
     border-radius: 20px;
-    padding-left: 20px;
     margin-bottom: 5px;
 }
 
 .table-record__review .review__header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
     padding: 15px;
 }
 
 .table-record__review .review__container{
-    height: 55px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
 }

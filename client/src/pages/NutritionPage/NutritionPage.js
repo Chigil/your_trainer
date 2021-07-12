@@ -9,15 +9,15 @@ import {Context} from "../../index";
 
 
 const NutritionPage = observer(() => {
-    const {training} = useContext(Context)
+    const {training,snackBar} = useContext(Context)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
     const [calories,setCalories] = useState('')
     const calorieTotal = Object.values(training.nutrition).reduce((totalCalories, nutrition) => totalCalories + nutrition.calories, 0);
     const addNutrition =  () => {
         createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
-            alert("Добавлено")
             getNutrition().then(data => training.setNutrition(data))
+            snackBar.openSnackBar("success","Created")
             setDate('')
             setName('')
             setCalories('')

@@ -6,7 +6,7 @@ import {Context} from "../../index";
 
 
 const ExercisesModal = observer(({onCloseModal}) => {
-    const {training} = useContext(Context)
+    const {training,snackBar} = useContext(Context)
     const [num,setNum] = useState(0)
     const [name,setName] = useState('')
     const [data,setData] = useState({})
@@ -14,12 +14,14 @@ const ExercisesModal = observer(({onCloseModal}) => {
     const handleSetData = (number,currentData) => {
         setData({...data,[number]:currentData})
     }
-    for (let i = 0; i < num; i += 1) {
+    for (let i = 0; i < num; i++) {
         listExercises.push(<ExerciseData setData={handleSetData} key={i} number={i}/>);
     }
 
     const handleCloseModal = async () => {
             training.setNewExercise({name,data})
+            training.exercises.push(training.newExercise)
+            snackBar.openSnackBar("success","Added")
             onCloseModal()
     }
     return (

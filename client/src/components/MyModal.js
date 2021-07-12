@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import Modal from "react-modal";
-import {Fragment, useContext} from "react";
+import {useContext} from "react";
 import {Context} from "../index";
 import LoginModal from "./LoginModal/LoginModal";
 import ExercisesModal from "./ExersicesModal/ExecisesModal";

@@ -74,9 +74,9 @@
 }
 
 .toggle{
-    position: absolute;
-    right: -20px;
-    top: 200px;
+    position: fixed;
+    left: 40px;
+    top: 440px;
     width: 40px;
     height: 40px;
     background: #740005;
@@ -84,7 +84,11 @@
     color: rgba(255, 255, 255, 0.7);
     border: 5px solid rgba(255, 255, 255, 0.7);
     border-radius: 50%;
-    z-index: 50000;
+    z-index: 0;
+    transition: 0.5s;
+}
+.toggle.active{
+    left: 200px;
 }
 .toggle:hover{
     color: #ffffff;

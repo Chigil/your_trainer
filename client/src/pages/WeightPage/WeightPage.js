@@ -7,15 +7,16 @@ import {createWeight, getWeight} from "../../http/weightAPI";
 import {Context} from "../../index";
 
 
+
 const WeightPage = observer( () => {
-    const {training} = useContext(Context)
+    const {training,snackBar} = useContext(Context)
     console.log("observer")
     const [date,setDate] = useState('')
     const [weight,setWeight] = useState('')
     const addWeight =  () => {
         createWeight({date: date,weight:weight}).then(data => {
             getWeight().then(data => training.setWeight(data))
-            alert("Добавлено")
+            snackBar.openSnackBar("success","Created")
             setDate('')
             setWeight('')
         })

@@ -1,10 +1,11 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './LoginModal.css'
 import {login, registration} from "../../http/userAPI";
 import { observer } from "mobx-react-lite"
 import {Context} from "../../index";
 import {NavLink,useLocation, useHistory} from "react-router-dom";
 import {APP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, START_ROUTE} from "../../utils/consts";
+
 
 const LoginModal = observer(({onCloseModal}) => {
     const location = useLocation()
@@ -33,6 +34,7 @@ const LoginModal = observer(({onCloseModal}) => {
         }
     }
     return (
+
         <React.Fragment>
             <a className="header_link">Join</a>
                 <button className="close" onClick={onCloseModal}>X</button>

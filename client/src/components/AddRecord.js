@@ -16,7 +16,6 @@ const AddRecord = observer(() =>{
 
         })
     }
-    console.log(training.records)
     return(<React.Fragment>
             {training.records.map(record =>
             <div className="review__container">
@@ -24,7 +23,7 @@ const AddRecord = observer(() =>{
                 <div className="review__container_weight">{record.weight}</div>
                 <div className="review__container_num/min">{record.num}</div>
                 <div className="review__container_date">{record.date}</div>
-                <div className="review__container_view"><img src={arrow} alt="image"/></div>
+                <div><div className="review__container_view"><img src={arrow} alt="image"/></div></div>
                 <div className="review__container_del"
                 onClick={()=>delRecord(record.id)}>
                     <img src={trash} alt="image"/></div>

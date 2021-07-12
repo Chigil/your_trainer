@@ -9,30 +9,34 @@ import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import plus from "../../svg/plus-circle-solid.svg";
-const dataExercises = []
 
 const ProgramPage = observer(() => {
-    const {training,modal} = useContext(Context)
-    const [date,setDate] = useState('')
-    const [name,setName] = useState('')
-    const [nameExercise,setNameExercise] = useState('')
-    const [infoExercise,setInfoExercise] = useState('')
-
-    const addTraining =  () => {
-        createTraining({date: date,name:name}).then(data => {
+    const {training, modal,snackBar} = useContext(Context)
+    const [date, setDate] = useState('')
+    const [name, setName] = useState('')
+    const addTraining = () => {
+        createTraining({date: date, name: name}).then(data => {
             getTraining().then(data => training.setTraining(data))
-            alert("Добавлено")
+            snackBar.openSnackBar("success","Created")
             setDate('')
             setName('')
         })
     }
+
+    console.log(training.newExercise.name)
+    console.log(training.exercises)
+
+
     useEffect(() => {
-        if (training._newExercise.name) {
-            setNameExercise(training._newExercise.name)
-            setInfoExercise(JSON.stringify(training._newExercise.data))
-            dataExercises.push({[nameExercise]:infoExercise})
-            console.log(dataExercises)
-        }
+        /*  if (training._newExercise.name) {
+              setNameExercise(training._newExercise.name)
+              setInfoExercise(JSON.stringify(training._newExercise.data))
+              dataExercises.push({[nameExercise]:infoExercise})
+
+              console.log(dataExercises)
+          }
+
+         */
     })
 
     return (
@@ -50,15 +54,20 @@ const ProgramPage = observer(() => {
                                 <h3>Name Training:</h3>
                                 <input
                                     value={name}
-                                    onChange={e=>setName(e.target.value)}
+                                    onChange={e => setName(e.target.value)}
                                 />
                             </div>
                             <div>
-                                {nameExercise}
-                                {infoExercise}
+                                {training.exercises.map(ex =>
+                                    <div>
+                                        Exercises: {ex.name}
+                                        <div>Info:{JSON.stringify(ex.data)}}</div>
+                                    </div>
+                         )}
                             </div>
                             <div className="exercise-plus">
-                                <img src={plus} alt="image" className="header_link" onClick={()=>modal.openModal('ExercisesModal')}/>
+                                <img src={plus} alt="image" className="header_link"
+                                     onClick={() => modal.openModal('ExercisesModal')}/>
                             </div>
                             <div className="exercise-minus">
                                 <img src={minus} alt="image"/>
