@@ -9,7 +9,7 @@ import {APP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, START_ROUTE} from "../../uti
 
 const LoginModal = observer(({onCloseModal}) => {
     const location = useLocation()
-    const {user} = useContext(Context)
+    const {user,snackBar} = useContext(Context)
     const [email,setEmail] = useState('')
     const history = useHistory()
     const [password,setPassword] = useState('')
@@ -30,7 +30,7 @@ const LoginModal = observer(({onCloseModal}) => {
             user.setIsAuth(true)
             history.push(APP_ROUTE)
         } catch (e){
-            alert(e.response.data.message)
+            snackBar.openSnackBar("error",(e.response.data.message))
         }
     }
     return (

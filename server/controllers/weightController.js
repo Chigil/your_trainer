@@ -6,7 +6,8 @@ class WeightController{
     async create(req,res,next){
         try {
             const {date, weight} = req.body
-            const kg = await Weight.create({date, weight})
+            const kg = await Weight.create({date,weight})
+            console.log(kg)
             return res.json(kg)
         }catch (e){
             next(ApiError.badRequest(e.message))

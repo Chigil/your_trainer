@@ -4,16 +4,12 @@ export default class TrainingStore {
     constructor() {
         this._trainings = []
         this._exercises = []
-        this._newExercise = {}
         this._nutrition = []
         this._weights = []
         this._records = []
         makeAutoObservable(this)
     }
 
-    setNewExercise(exercise) {
-        this._newExercise = exercise
-    }
 
     setTraining(trainings) {
         this._trainings = trainings
@@ -41,10 +37,6 @@ export default class TrainingStore {
 
     setRecord(records) {
         this._records = records
-    }
-
-    get newExercise() {
-        return this._newExercise
     }
 
     get trainings() {

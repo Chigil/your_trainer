@@ -6,11 +6,11 @@ import {deleteNutrition, getNutrition} from "../http/nutritionApi";
 //Использовать get (Избивиться от фильтра)
 
 const NutritionCalories = observer(() => {
-    const {training} = useContext(Context)
+    const {training,snackBar} = useContext(Context)
     const delNutrition = (id) =>{
         console.log(id)
         deleteNutrition({id:id}).then(data=>{
-            alert("Deleted")
+            snackBar.openSnackBar("info","Deleted")
             getNutrition().then(data => training.removeNutrition(id))
 
         })

@@ -39,7 +39,11 @@ const CustomizedSnackbars =  observer(() => {
 
     return (
         <div className={classes.root}>
-            <Snackbar open={handleOpen} autoHideDuration={3000} onClose={handleClose}>
+            <Snackbar
+                anchorOrigin={{ vertical:'bottom', horizontal:'right' }}
+                open={handleOpen}
+                autoHideDuration={3000}
+                onClose={handleClose}>
                 <Alert onClose={handleClose} severity={severity}>
                     {message}
                 </Alert>

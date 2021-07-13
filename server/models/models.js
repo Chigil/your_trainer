@@ -18,6 +18,7 @@ const Exercise = sequelize.define('exercise',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
     title: {type:DataTypes.STRING},
     text: {type:DataTypes.STRING},
+    trainingId:{type:DataTypes.INTEGER}
 })
 
 const Nutrition = sequelize.define('nutrition',{
@@ -29,7 +30,7 @@ const Nutrition = sequelize.define('nutrition',{
 
 const Weight = sequelize.define('weight',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
-    date: {type:DataTypes.DATE},
+    date: {type:DataTypes.DATEONLY},
     weight: {type:DataTypes.FLOAT},
 })
 

@@ -19,8 +19,7 @@ const ExercisesModal = observer(({onCloseModal}) => {
     }
 
     const handleCloseModal = async () => {
-            training.setNewExercise({name,data})
-            training.exercises.push(training.newExercise)
+            training.exercises.push({name,data})
             snackBar.openSnackBar("success","Added")
             onCloseModal()
     }

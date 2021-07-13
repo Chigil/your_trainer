@@ -1,5 +1,5 @@
 import "./ProgramPage.css"
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext, useState} from "react"
 import arrowRight from "../../svg/arrow-circle-right-solid.svg"
 import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
 import minus from "../../svg/minus-circle-solid.svg"
@@ -9,6 +9,7 @@ import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import plus from "../../svg/plus-circle-solid.svg";
+import ProgramExercise from "./ProgramExercise";
 
 const ProgramPage = observer(() => {
     const {training, modal,snackBar} = useContext(Context)
@@ -22,22 +23,8 @@ const ProgramPage = observer(() => {
             setName('')
         })
     }
-
-    console.log(training.newExercise.name)
     console.log(training.exercises)
 
-
-    useEffect(() => {
-        /*  if (training._newExercise.name) {
-              setNameExercise(training._newExercise.name)
-              setInfoExercise(JSON.stringify(training._newExercise.data))
-              dataExercises.push({[nameExercise]:infoExercise})
-
-              console.log(dataExercises)
-          }
-
-         */
-    })
 
     return (
         <div className="program">
@@ -45,11 +32,13 @@ const ProgramPage = observer(() => {
                 <div className="program__container">
                     <div className="program__fill">
                         <h1>My Program</h1>
+                        <div className="data__container">
+                        <DatePicker
+                            date={date}
+                            setDate={setDate}
+                        />
+                        </div>
                         <div className="program__form">
-                            <DatePicker
-                                date={date}
-                                setDate={setDate}
-                            />
                             <div className="program__name">
                                 <h3>Name Training:</h3>
                                 <input
@@ -57,20 +46,15 @@ const ProgramPage = observer(() => {
                                     onChange={e => setName(e.target.value)}
                                 />
                             </div>
-                            <div>
-                                {training.exercises.map(ex =>
-                                    <div>
-                                        Exercises: {ex.name}
-                                        <div>Info:{JSON.stringify(ex.data)}}</div>
-                                    </div>
-                         )}
-                            </div>
+                            <ProgramExercise/>
                             <div className="exercise-plus">
                                 <img src={plus} alt="image" className="header_link"
                                      onClick={() => modal.openModal('ExercisesModal')}/>
                             </div>
                             <div className="exercise-minus">
-                                <img src={minus} alt="image"/>
+                                <img src={minus}
+                                     onClick={() => (training.exercises.pop())}
+                                         alt="image"/>
                             </div>
                             <button
                                 className="form__button_save"

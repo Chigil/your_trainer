@@ -7,19 +7,30 @@
     align-items: center;
 }
 
-.program__name{
+.program__name {
     display: flex;
     padding-top: 25px;
 }
-.program__name input{
+
+.program__name input {
     margin-left: 15px;
 }
-.program__container h1{
-    color:#FFFFFF;
+
+.program__container h1 {
+    color: #FFFFFF;
     font-size: 35px;
     line-height: 53px;
     letter-spacing: -0.015em;
+    padding-bottom: 0;
+    margin: 20px;
+    text-align: center;
+    width: 100%;
 }
+
+.data__container {
+    margin: 25px;
+}
+
 .program__fill {
     flex-wrap: wrap;
     display: flex;
@@ -28,15 +39,14 @@
     min-height: 600px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
     margin: 50px;
+    align-items: flex-start;
 
 }
 
 .program__form {
     overflow: auto;
+    box-sizing: border-box;
     width: 350px;
     display: flex;
     max-height: 445px;
@@ -48,9 +58,10 @@
     flex-wrap: wrap;
     padding-left: 20px;
     align-items: center;
+    margin: 25px;
 }
 
-.program__form h3{
+.program__form h3 {
     font-size: 22px;
     line-height: 26px;
     letter-spacing: -0.015em;
@@ -96,15 +107,17 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.weight__fill_kg input{
+.weight__fill_kg input {
     width: 170px;
 }
-.weight__fill_number{
+
+.weight__fill_number {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.weight__fill_number .weight__fill_number__num{
+
+.weight__fill_number .weight__fill_number__num {
     text-align: center;
     align-items: center;
     width: 63px;
@@ -115,7 +128,7 @@
     justify-content: center;
 }
 
-.timetable{
+.timetable {
     width: 1050px;
     height: 600px;
     background: rgba(0, 0, 0, 0.7);
@@ -127,7 +140,7 @@
     flex-wrap: wrap;
 }
 
-.timetable__container{
+.timetable__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,17 +150,18 @@
     border-radius: 25px;
 }
 
-.timetable h1{
+.timetable h1 {
     padding-bottom: 25px;
 }
-.timetable__nav{
+
+.timetable__nav {
     display: flex;
     flex-wrap: wrap;
     align-self: flex-end;
-    padding:20px 20px 15px 0;
+    padding: 20px 20px 15px 0;
 }
 
-.timetable__review{
+.timetable__review {
     width: 945px;
     height: 480px;
     display: grid;
@@ -156,34 +170,35 @@
     border-radius: 25px;
 }
 
-.timetable__review .timetable-review__header{
+.timetable__review .timetable-review__header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     padding: 15px;
 }
 
-.timetable__nav_left{
-    width:30px;
-    height:30px;
+.timetable__nav_left {
+    width: 30px;
+    height: 30px;
 }
 
-.timetable__nav_right{
-    width:30px;
-    height:30px;
+.timetable__nav_right {
+    width: 30px;
+    height: 30px;
 }
 
-.timetable__review .timetable-review__container{
+.timetable__review .timetable-review__container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background: #C4C4C4;
     border-radius: 0 0 20px 20px;
 }
 
-.exercise-plus{
-    width:40px;
-    height:40px;
+.exercise-plus {
+    width: 40px;
+    height: 40px;
 }
-.exercise-minus{
-    width:40px;
-    height:40px;
+
+.exercise-minus {
+    width: 40px;
+    height: 40px;
 }
