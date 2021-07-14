@@ -29,20 +29,6 @@
     color:#ffffff;
 }
 
-.register {
-    width: 200px;
-    height: 60px;
-    margin: 35px 75px;
-    background-color: Transparent;
-    border: 2px #740005 solid;
-    border-radius: 20px;
-    text-align: center;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 31px;
-    color: black;
-}
 .exercise-num_input{
     width: 50px;
 }

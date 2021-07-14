@@ -23,7 +23,7 @@ input {
     color: black;
 }
 
-.register :hover{
+.register:hover{
     color: #fff;
     background: #740005;
 }

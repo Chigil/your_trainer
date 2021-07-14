@@ -1,11 +1,13 @@
 import "./History.css"
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import arrow from "../../svg/arrow-circle-right-solid.svg"
 import DatePicker from "../../components/DatePicker";
 import {observer} from "mobx-react-lite";
+import {Context} from "../../index";
 
 const History = observer(() => {
     const [date,setDate] = useState('')
+    const {training} = useContext(Context)
     return (
         <div className="history">
             <div className="history__content">

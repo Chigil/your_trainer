@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import ProgramPage from "./ProgramPage";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
@@ -26,11 +25,11 @@ const ProgramExercise = observer(() => {
         <div style={{display:"flex",width:"100%",flexDirection:"column"}}>
             {training.exercises.map(ex => {
                     console.log(training.exercises)
-                    console.log(ex.data)
+                    console.log(ex.text)
                     return (
                         <div>
-                            Exercises: {ex.name}
-                            <div>{parseExercise(ex.data)}
+                            Exercises: {ex.title}
+                            <div>{parseExercise(ex.text)}
                             </div>
                         </div>
                     )

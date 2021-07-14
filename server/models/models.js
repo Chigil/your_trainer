@@ -10,7 +10,7 @@ const User = sequelize.define('user',{
 
 const Training = sequelize.define('training',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
-    date: {type:DataTypes.DATE},
+    date: {type:DataTypes.DATEONLY},
     training_name: {type:DataTypes.STRING},
 })
 
@@ -23,7 +23,7 @@ const Exercise = sequelize.define('exercise',{
 
 const Nutrition = sequelize.define('nutrition',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
-    date: {type:DataTypes.DATE},
+    date: {type:DataTypes.DATEONLY},
     name_nutrition: {type:DataTypes.STRING},
     calories: {type:DataTypes.FLOAT},
 })
@@ -36,7 +36,7 @@ const Weight = sequelize.define('weight',{
 
 const Record = sequelize.define('record',{
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
-    date: {type:DataTypes.DATE},
+    date: {type:DataTypes.DATEONLY},
     exercise_name: {type:DataTypes.STRING},
     weight: {type:DataTypes.FLOAT},
     num: {type:DataTypes.INTEGER},

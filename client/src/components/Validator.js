@@ -26,15 +26,15 @@ const useValidation = (value, validations) => {
 
             }
         }
-    },[value])
-    useEffect(()=>{
-    if (isEmpty || minLengthError || maxLengthError || emailError){
-        setInputValid(false)
-    } else {
-        setInputValid(true)
-    }
-    },[isEmpty,minLengthError,maxLengthError,emailError])
-    return{
+    }, [value])
+    useEffect(() => {
+        if (isEmpty || minLengthError || maxLengthError || emailError) {
+            setInputValid(false)
+        } else {
+            setInputValid(true)
+        }
+    }, [isEmpty, minLengthError, maxLengthError, emailError])
+    return {
         isEmpty,
         minLengthError,
         maxLengthError,
@@ -44,52 +44,52 @@ const useValidation = (value, validations) => {
 }
 
 
-    const useInput = (initialValue,validations) => {
-        const [value, setValue] = useState(initialValue)
-        const [isDirty, setDirty] = useState(initialValue)
-        const valid = useValidation(value,validations)
-        const onChange = (e) => {
-            setValue(e.target.value)
-        }
-
-        const onBlur = (e) => {
-            setDirty(true)
-        }
-        return {
-            value,
-            onChange,
-            onBlur,
-            isDirty,
-            ...valid
-        }
+const useInput = (initialValue, validations) => {
+    const [value, setValue] = useState(initialValue)
+    const [isDirty, setDirty] = useState(initialValue)
+    const valid = useValidation(value, validations)
+    const onChange = (e) => {
+        setValue(e.target.value)
     }
 
-    const Validator = () => {
-        const email = useInput('',{isEmpty:true,minLength:3,isEmail:true})
-        const password = useInput('',{isEmpty:true,minLength:5,maxLength:8})
-        return (
-            <div>
-                <form>
-                    {(email.isDirty && email.isEmpty) && <div style={{color:"red"}}>Поле не может быть пустым</div>}
-                    {(email.isDirty && email.minLengthError) && <div style={{color:"red"}}>Неккоректная длинна</div>}
-                    {(email.isDirty && email.emailError) && <div style={{color:"red"}}>Неккоректная эмайл</div>}
-                    <input
-                        value={email.value}
-                        onChange={email.onChange}
-                        onBlur={e => email.onBlur(e)}
-                    />
-                    {(password.isDirty && password.isEmpty) && <div style={{color:"red"}}>Поле не может быть пустым</div>}
-                    {(password.isDirty && password.maxLengthError) && <div style={{color:"red"}}>Слишком длинный</div>}
-                    {(password.isDirty && password.minLengthError) && <div style={{color:"red"}}>Неккоректная длинна</div>}
-                    <input
-                        value={password.value}
-                        onChange={password.onChange}
-                        onBlur={e => password.onBlur(e)}
-                    />
-                    <button disabled={!email.inputValid || !password.inputValid}>Register</button>
-                </form>
-            </div>
-        )
+    const onBlur = (e) => {
+        setDirty(true)
     }
+    return {
+        value,
+        onChange,
+        onBlur,
+        isDirty,
+        ...valid
+    }
+}
 
-    export default Validator
+const Validator = () => {
+    const email = useInput('', {isEmpty: true, minLength: 3, isEmail: true})
+    const password = useInput('', {isEmpty: true, minLength: 5, maxLength: 8})
+    return (
+        <div>
+            <form>
+                {(email.isDirty && email.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
+                {(email.isDirty && email.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
+                {(email.isDirty && email.emailError) && <div style={{color: "red"}}>Неккоректная эмайл</div>}
+                <input
+                    value={email.value}
+                    onChange={email.onChange}
+                    onBlur={e => email.onBlur(e)}
+                />
+                {(password.isDirty && password.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
+                {(password.isDirty && password.maxLengthError) && <div style={{color: "red"}}>Слишком длинный</div>}
+                {(password.isDirty && password.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
+                <input
+                    value={password.value}
+                    onChange={password.onChange}
+                    onBlur={e => password.onBlur(e)}
+                />
+                <button disabled={!email.inputValid || !password.inputValid}>Register</button>
+            </form>
+        </div>
+    )
+}
+export default useInput
+

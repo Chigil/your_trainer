@@ -8,18 +8,18 @@ import {Context} from "../../index";
 const ExercisesModal = observer(({onCloseModal}) => {
     const {training,snackBar} = useContext(Context)
     const [num,setNum] = useState(0)
-    const [name,setName] = useState('')
-    const [data,setData] = useState({})
+    const [title,setTitle] = useState('')
+    const [text,setText] = useState({})
     const listExercises = [];
     const handleSetData = (number,currentData) => {
-        setData({...data,[number]:currentData})
+        setText({...text,[number]:currentData})
     }
     for (let i = 0; i < num; i++) {
         listExercises.push(<ExerciseData setData={handleSetData} key={i} number={i}/>);
     }
 
     const handleCloseModal = async () => {
-            training.exercises.push({name,data})
+            training.exercises.push({title,text})
             snackBar.openSnackBar("success","Added")
             onCloseModal()
     }
@@ -32,8 +32,8 @@ const ExercisesModal = observer(({onCloseModal}) => {
                         <div>
                             <p>Exercise name</p>
                             <input className="exercise-name_input"
-                                   value = {name}
-                                   onChange={e=>setName(e.target.value)}
+                                   value = {title}
+                                   onChange={e=>setTitle(e.target.value)}
                             />
                         </div>
                         <div>

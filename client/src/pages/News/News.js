@@ -34,7 +34,6 @@ const News = () => {
                     </div>
                 </div>
             </div>
-            <Validator/>
         </div>
     )
 }

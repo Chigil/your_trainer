@@ -10,10 +10,13 @@ class TrainingController{
             console.log({date,training_name,exercise_names,userId})
             const training = await Training.create({date,training_name,userId})
             if (exercise_names) {
+                console.log(training)
                 await Promise.all(exercise_names.map((item) => {
+                    console.log(training)
+                    console.log(item.text,item.title)
                     return Exercise.create({
                         title: item.title,
-                        text: item.text,
+                        text: JSON.stringify(item.text),
                         trainingId: training.id,
                         userId: userId
                     })

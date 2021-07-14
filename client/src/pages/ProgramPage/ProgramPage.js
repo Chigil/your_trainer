@@ -11,17 +11,19 @@ import {observer} from "mobx-react-lite";
 import plus from "../../svg/plus-circle-solid.svg";
 import ProgramExercise from "./ProgramExercise";
 
+
+
 const ProgramPage = observer(() => {
-    const {training, modal,snackBar} = useContext(Context)
+    const {training, user, modal, snackBar} = useContext(Context)
     const [date, setDate] = useState('')
     const [name, setName] = useState('')
     const addTraining = () => {
-        createTraining({date: date, name: name}).then(data => {
+        createTraining({date: date, training_name: name, exercise_names: training.exercises,userId: user.id}).then(data => {
             getTraining().then(data => training.setTraining(data))
-            snackBar.openSnackBar("success","Created")
-            setDate('')
-            setName('')
-        })
+                    snackBar.openSnackBar("success","Created")
+                    setDate('')
+                    setName('')
+            })
     }
     console.log(training.exercises)
 
