@@ -1,10 +1,11 @@
-import { observer } from "mobx-react-lite";
+import {observer} from "mobx-react-lite";
 import Modal from "react-modal";
-import {useContext} from "react";
+import React, {useContext} from "react";
 import {Context} from "../index";
 import LoginModal from "./LoginModal/LoginModal";
 import ExercisesModal from "./ExersicesModal/ExecisesModal";
 import * as ModalTypes from "./ModalTypes";
+import close from "../svg/times-circle-solid.svg"
 
 
 const mapTypeToModal = {
@@ -22,21 +23,22 @@ const MyModal = observer(() => {
             bottom: 0,
             backgroundColor: 'rgba(255, 255, 255, 0.25)'
         },
-        content : {
-            top                   : '50%',
-            left                  : '50%',
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(-50%, -50%)',
-            fontSize              : '22px',
-            width: '335px',
-            height: '520px',
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            fontSize: '20px',
+            width: '315px',
+            minHeight: '470px',
             borderRadius: '15px'
-        }};
+        }
+    }
+
     const {modal} = useContext(Context)
-    console.log(modal._modalState)
-    if(modal._modalState === false) return null
+    if (modal._modalState === false) return null
     const name = modal._modalName
     const data = modal._modalValues
     const CurrentModal = mapTypeToModal[name]
@@ -45,15 +47,19 @@ const MyModal = observer(() => {
     }
     return (
         <>
-            {CurrentModal&&(
+            {CurrentModal && (
                 <Modal
                     isOpen
-                    onRequestClose={()=>modal.closeModal()}
+                    onRequestClose={() => modal.closeModal()}
                     style={customStyles}
                     ariaHideApp={false}
                 >
                     <div>
-                        <div className="modal-body">
+                        <div className="close" style={{width: '25px', height: '25px'}}
+                             onClick={handleCloseModal}>
+                            <img src={close} style={{width: '100%', height: '100%'}} alt="close"/>
+                        </div>
+                        <div className="modal-body" style={{paddingTop: '15px'}}>
                             <CurrentModal onCloseModal={handleCloseModal}/>
                         </div>
                     </div>

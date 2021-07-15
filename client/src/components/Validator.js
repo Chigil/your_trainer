@@ -29,9 +29,9 @@ const useValidation = (value, validations) => {
     }, [value])
     useEffect(() => {
         if (isEmpty || minLengthError || maxLengthError || emailError) {
-            setInputValid(false)
+            setInputValid(false);
         } else {
-            setInputValid(true)
+            setInputValid(true);
         }
     }, [isEmpty, minLengthError, maxLengthError, emailError])
     return {

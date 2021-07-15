@@ -20,6 +20,8 @@ const ProgramPage = observer(() => {
     const addTraining = () => {
         createTraining({date: date, training_name: name, exercise_names: training.exercises,userId: user.id}).then(data => {
             getTraining().then(data => training.setTraining(data))
+                    console.log(date)
+
                     snackBar.openSnackBar("success","Created")
                     setDate('')
                     setName('')

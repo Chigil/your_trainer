@@ -25,7 +25,6 @@ const ExercisesModal = observer(({onCloseModal}) => {
     }
     return (
         <React.Fragment>
-                <button className="close" onClick={onCloseModal}>X</button>
                 <h2>Create you Exercise</h2>
                 <div className="wrapper-exercise">
                     <div className="wrapper-exercise_name">

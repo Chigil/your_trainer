@@ -36,28 +36,28 @@ const LoginModal = observer(({onCloseModal}) => {
     return (
 
         <React.Fragment>
-            <a className="header_link">Join</a>
-            <button className="close" onClick={onCloseModal}>X</button>
             <h3>{isLogin ? "Login Your Account" : "Register Your Account"}</h3>
             <p>Enter Your Email</p>
-                {(email.isDirty && email.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
-                {(email.isDirty && email.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
-                {(email.isDirty && email.emailError) && <div style={{color: "red"}}>Неккоректная эмайл</div>}
+
                 <input
                     value={email.value}
                     onChange={email.onChange}
                     onBlur={e => email.onBlur(e)}
                 />
+                {(email.isDirty && email.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
+                {(email.isDirty && email.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
+                {(email.isDirty && email.emailError) && <div style={{color: "red"}}>Неккоректная эмайл</div>}
                 <p>Enter Your Password</p>
-                {(password.isDirty && password.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
-                {(password.isDirty && password.maxLengthError) && <div style={{color: "red"}}>Слишком длинный</div>}
-                {(password.isDirty && password.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
+
                 <input
                     value={password.value}
                     onChange={password.onChange}
                     onBlur={e => password.onBlur(e)}
                     type="password"
                 />
+                {(password.isDirty && password.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
+                {(password.isDirty && password.maxLengthError) && <div style={{color: "red"}}>Слишком длинный</div>}
+                {(password.isDirty && password.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
                 {isLogin ?
                     <div>
                         Don't have an account? <NavLink to={START_ROUTE + REGISTRATION_ROUTE}> Register now! </NavLink>
