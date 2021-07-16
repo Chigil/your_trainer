@@ -7,6 +7,7 @@ import {observer} from "mobx-react-lite";
 import AppRouter from "./components/AppRouter";
 import MyModal from "./components/MyModal";
 import CustomizedSnackbars from "./components/Snackbar";
+import {ScaleLoader} from "react-spinners";
 
 
 
@@ -21,7 +22,7 @@ const App = observer(() => {
     }, [])
 
     if (loading) {
-        console.log("hi")
+       return <ScaleLoader/>
     }
     return (
         <BrowserRouter>

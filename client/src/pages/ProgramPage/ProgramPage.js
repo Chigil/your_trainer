@@ -10,6 +10,8 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import plus from "../../svg/plus-circle-solid.svg";
 import ProgramExercise from "./ProgramExercise";
+import PlusButton from "../../components/Button/PlusButton";
+import MinusButton from "../../components/Button/MinusButton";
 
 
 
@@ -51,15 +53,8 @@ const ProgramPage = observer(() => {
                                 />
                             </div>
                             <ProgramExercise/>
-                            <div className="exercise-plus">
-                                <img src={plus} alt="image" className="header_link"
-                                     onClick={() => modal.openModal('ExercisesModal')}/>
-                            </div>
-                            <div className="exercise-minus">
-                                <img src={minus}
-                                     onClick={() => (training.exercises.pop())}
-                                         alt="image"/>
-                            </div>
+                            <PlusButton  onClick={() => modal.openModal('ExercisesModal')}/>
+                            <MinusButton  onClick={() => (training.exercises.pop())}/>
                             <button
                                 className="form__button_save"
                                 onClick={addTraining}

@@ -3,6 +3,7 @@ import './ExercisesModal.css'
 import { observer } from "mobx-react-lite";
 import ExerciseData from "../ExerciseData";
 import {Context} from "../../index";
+import PlusButton from "../Button/PlusButton";
 
 
 const ExercisesModal = observer(({onCloseModal}) => {
@@ -11,11 +12,21 @@ const ExercisesModal = observer(({onCloseModal}) => {
     const [title,setTitle] = useState('')
     const [text,setText] = useState({})
     const listExercises = [];
+
+    const deleteExercise = (number) =>{
+        const [number,setNumber] = useState('')
+        const index = listExercises.indexOf(number);
+        if (index > -1) {
+            listExercises.splice(index, 1);
+        }
+
+    }
+    console.log(text)
     const handleSetData = (number,currentData) => {
         setText({...text,[number]:currentData})
     }
     for (let i = 0; i < num; i++) {
-        listExercises.push(<ExerciseData setData={handleSetData} key={i} number={i}/>);
+        listExercises.push(<ExerciseData setData={handleSetData} deletData={deleteExercise} key={i} number={i}/>);
     }
 
     const handleCloseModal = async () => {
@@ -25,7 +36,7 @@ const ExercisesModal = observer(({onCloseModal}) => {
     }
     return (
         <React.Fragment>
-                <h2>Create you Exercise</h2>
+                <h3>Create you Exercise</h3>
                 <div className="wrapper-exercise">
                     <div className="wrapper-exercise_name">
                         <div>
@@ -37,9 +48,7 @@ const ExercisesModal = observer(({onCloseModal}) => {
                         </div>
                         <div>
                             <p>num</p>
-                            <input className="exercise-num_input"
-                                   onChange={e=>setNum(e.target.value)}
-                            />
+                            <PlusButton onClick={() => setNum(num+1)}/>
                         </div>
                     </div>
                     <div className="exercise-data">
