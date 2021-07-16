@@ -10,10 +10,6 @@ const ExerciseData = observer( ({setData,number,deleteData}) => {
         setData(number,{kg,num})
     }, [kg,num])
 
-    useEffect(() => {
-        deleteData(number)
-    }, [number])
-
     return(
     <div className="exercise-data_content">
         <div>
@@ -31,7 +27,7 @@ const ExerciseData = observer( ({setData,number,deleteData}) => {
             />
         </div>
         <div style={{display:'flex',alignItems:'flex-end'}}>
-            <MinusButton onClick={deleteData(number)}/>
+            <MinusButton onClick={()=>deleteData(number)}/>
         </div>
     </div>
     )

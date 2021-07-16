@@ -1,9 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './ExercisesModal.css'
 import { observer } from "mobx-react-lite";
 import ExerciseData from "../ExerciseData";
 import {Context} from "../../index";
 import PlusButton from "../Button/PlusButton";
+import MinusButton from "../Button/MinusButton";
 
 
 const ExercisesModal = observer(({onCloseModal}) => {
@@ -11,22 +12,23 @@ const ExercisesModal = observer(({onCloseModal}) => {
     const [num,setNum] = useState(0)
     const [title,setTitle] = useState('')
     const [text,setText] = useState({})
-    const listExercises = [];
+    const [listExercises,setListExercises] = useState([]);
 
-    const deleteExercise = (number) =>{
-        const [number,setNumber] = useState('')
-        const index = listExercises.indexOf(number);
-        if (index > -1) {
-            listExercises.splice(index, 1);
-        }
-
-    }
-    console.log(text)
     const handleSetData = (number,currentData) => {
         setText({...text,[number]:currentData})
     }
-    for (let i = 0; i < num; i++) {
-        listExercises.push(<ExerciseData setData={handleSetData} deletData={deleteExercise} key={i} number={i}/>);
+
+    const addExercise = (num) => {
+        setNum(num+1)
+        console.log(num)
+        listExercises.push(<ExerciseData setData={handleSetData} deleteData={deleteExercise} key={num} number={num}/>);
+    }
+
+    console.log(text)
+
+    const deleteExercise = (num) =>{
+        setText({...text})
+        delete listExercises[num]
     }
 
     const handleCloseModal = async () => {
@@ -48,7 +50,7 @@ const ExercisesModal = observer(({onCloseModal}) => {
                         </div>
                         <div>
                             <p>num</p>
-                            <PlusButton onClick={() => setNum(num+1)}/>
+                            <PlusButton onClick={() => addExercise(num)}/>
                         </div>
                     </div>
                     <div className="exercise-data">

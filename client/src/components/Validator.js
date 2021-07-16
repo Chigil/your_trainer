@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 
 const useValidation = (value, validations) => {
     const [isEmpty, setEmpty] = useState(true)
+    const [numberError,setNumberError] = useState(false)
     const [minLengthError, setMinLengthError] = useState(false)
     const [maxLengthError, setMaxLengthError] = useState(false)
     const [emailError, setEmailError] = useState(false)
@@ -22,23 +23,27 @@ const useValidation = (value, validations) => {
                 case  'isEmail':
                     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     return re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true);
-                    break;
+                case 'isNumber':
+                     return (/\D/.test(value)) ? setNumberError(true) : setNumberError(false)
+
+
 
             }
         }
     }, [value])
     useEffect(() => {
-        if (isEmpty || minLengthError || maxLengthError || emailError) {
+        if (isEmpty || minLengthError || maxLengthError || emailError || numberError) {
             setInputValid(false);
         } else {
             setInputValid(true);
         }
-    }, [isEmpty, minLengthError, maxLengthError, emailError])
+    }, [isEmpty, minLengthError, maxLengthError, emailError, numberError])
     return {
         isEmpty,
         minLengthError,
         maxLengthError,
         emailError,
+        numberError,
         inputValid
     }
 }
@@ -60,6 +65,7 @@ const useInput = (initialValue, validations) => {
         onChange,
         onBlur,
         isDirty,
+        setValue,
         ...valid
     }
 }

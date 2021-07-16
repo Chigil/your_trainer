@@ -6,21 +6,21 @@ import {observer} from "mobx-react-lite";
 import NutritionCalories from "../../components/NutritionCalories";
 import {createNutrition, getNutrition} from "../../http/nutritionApi";
 import {Context} from "../../index";
-
+import useInput from "../../components/Validator"
 
 const NutritionPage = observer(() => {
     const {training,snackBar} = useContext(Context)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
-    const [calories,setCalories] = useState('')
+    const calories = useInput('', {isEmpty: true, isNumber: true})
     const calorieTotal = Object.values(training.nutrition).reduce((totalCalories, nutrition) => totalCalories + nutrition.calories, 0);
     const addNutrition =  () => {
-        createNutrition({date: date, name_nutrition: name, calories: calories}).then(data => {
+        createNutrition({date: date, name_nutrition: name, calories: calories.value}).then(data => {
             getNutrition().then(data => training.setNutrition(data))
             snackBar.openSnackBar("success","Created")
             setDate('')
             setName('')
-            setCalories('')
+            calories.setValue('')
         })
     }
 
@@ -51,9 +51,12 @@ const NutritionPage = observer(() => {
                                     <li className="calories__item">
                                         <h3>Calories:</h3>
                                         <input
-                                            value={calories}
-                                            onChange={e=>setCalories(e.target.value)}
+                                            value={calories.value}
+                                            onChange={calories.onChange}
+                                            onBlur={e => calories.onBlur(e)}
                                         />
+                                        {(calories.isDirty && calories.isEmpty) && <div style={{color: "red"}}>Поле не должно быть пустым</div>}
+                                        {(calories.isDirty && calories.numberError) && <div style={{color: "red"}}>Введите цифры</div>}
                                     </li>
                                 </ul>
                                 <button
