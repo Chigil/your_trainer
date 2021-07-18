@@ -12,8 +12,6 @@ class TrainingController{
             if (exercise_names) {
                 console.log(training)
                 await Promise.all(exercise_names.map((item) => {
-                    console.log(training)
-                    console.log(item.text,item.title)
                     return Exercise.create({
                         title: item.title,
                         text: JSON.stringify(item.text),

@@ -1,23 +1,23 @@
 const {Weight} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
-class WeightController{
+class WeightController {
 
-    async create(req,res,next){
+    async create(req, res, next) {
         try {
-            const {date, weight} = req.body
-            const kg = await Weight.create({date,weight})
-            console.log(kg)
+            const {date, weight, userId} = req.body
+            const kg = await Weight.create({date, weight, userId})
             return res.json(kg)
-        }catch (e){
+        } catch (e) {
             next(ApiError.badRequest(e.message))
         }
-
     }
-    async get(req,res){
-        const {date,weight} =  req.query
-        const kg = await Weight.findAll({where:date,weight})
+
+    async get(req, res) {
+        const {date, weight, userId} = req.query
+        const kg = await Weight.findAll({where: date, weight, userId})
         return res.json(kg)
     }
 }
+
 module.exports = new WeightController()

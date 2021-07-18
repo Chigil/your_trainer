@@ -2,17 +2,14 @@ import "./ProgramPage.css"
 import React, {useContext, useState} from "react"
 import arrowRight from "../../svg/arrow-circle-right-solid.svg"
 import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
-import minus from "../../svg/minus-circle-solid.svg"
 import ExercisesModal from "../../components/ExersicesModal/ExecisesModal";
 import {createTraining, getTraining} from "../../http/trainingApi";
 import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
-import plus from "../../svg/plus-circle-solid.svg";
 import ProgramExercise from "./ProgramExercise";
 import PlusButton from "../../components/Button/PlusButton";
 import MinusButton from "../../components/Button/MinusButton";
-
 
 
 const ProgramPage = observer(() => {
@@ -20,17 +17,18 @@ const ProgramPage = observer(() => {
     const [date, setDate] = useState('')
     const [name, setName] = useState('')
     const addTraining = () => {
-        createTraining({date: date, training_name: name, exercise_names: training.exercises,userId: user.id}).then(data => {
+        createTraining({
+            date: date,
+            training_name: name,
+            exercise_names: training.exercises,
+            userId: user.id
+        }).then(data => {
             getTraining().then(data => training.setTraining(data))
-                    console.log(date)
-
-                    snackBar.openSnackBar("success","Created")
-                    setDate('')
-                    setName('')
-            })
+            snackBar.openSnackBar("success", "Created")
+            setDate('')
+            setName('')
+        }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"))
     }
-    console.log(training.exercises)
-
 
     return (
         <div className="program">
@@ -39,10 +37,10 @@ const ProgramPage = observer(() => {
                     <div className="program__fill">
                         <h1>My Program</h1>
                         <div className="data__container">
-                        <DatePicker
-                            date={date}
-                            setDate={setDate}
-                        />
+                            <DatePicker
+                                date={date}
+                                setDate={setDate}
+                            />
                         </div>
                         <div className="program__form">
                             <div className="program__name">
@@ -53,8 +51,8 @@ const ProgramPage = observer(() => {
                                 />
                             </div>
                             <ProgramExercise/>
-                            <PlusButton  onClick={() => modal.openModal('ExercisesModal')}/>
-                            <MinusButton  onClick={() => (training.exercises.pop())}/>
+                            <PlusButton onClick={() => modal.openModal('ExercisesModal')}/>
+                            <MinusButton onClick={() => (training.exercises.pop())}/>
                             <button
                                 className="form__button_save"
                                 onClick={addTraining}

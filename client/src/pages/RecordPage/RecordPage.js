@@ -8,21 +8,21 @@ import {Context} from "../../index";
 
 
 const RecordPage = observer(() => {
-    const {training} = useContext(Context)
-    const [weight,setWeight] = useState('')
-    const [exercise,setExercise] = useState('')
-    const [num,setNum] = useState('')
-    const [date,setDate] = useState('')
-    const addRecord =  () => {
-        createRecord({date: date, weight: weight, exercise_name:exercise, num:num}).then(data => {
-            alert("Добавлено")
+    const {training, user, snackBar} = useContext(Context)
+    const [weight, setWeight] = useState('')
+    const [exercise, setExercise] = useState('')
+    const [num, setNum] = useState('')
+    const [date, setDate] = useState('')
+    const addRecord = () => {
+        createRecord({date: date, weight: weight, exercise_name: exercise, num: num, userId: user.id}).then(data => {
+            snackBar.openSnackBar("success", "Created")
             getRecord().then(data => training.setRecord(data))
             setDate('')
             setWeight('')
             setExercise('')
             setNum('')
-        })
-        }
+        }).catch(()=>snackBar.openSnackBar("error","Enter all input please!"))
+    }
     return (
         <div className="record-page">
             <div className="record-page__content">
@@ -33,21 +33,21 @@ const RecordPage = observer(() => {
                             <h3>Exercise:</h3>
                             <input
                                 value={exercise}
-                                onChange={e=>setExercise(e.target.value)}
+                                onChange={e => setExercise(e.target.value)}
                             />
                             <div className="weight__form_grid">
                                 <div className="weight__fill_kg">
                                     <h3>Weight :</h3>
                                     <input
                                         value={weight}
-                                        onChange={e=>setWeight(e.target.value)}
+                                        onChange={e => setWeight(e.target.value)}
                                     />
                                 </div>
                                 <div className="weight__fill_number">
                                     <h3>min/kg :</h3>
                                     <input className="weight__fill_number__num"
                                            value={num}
-                                           onChange={e=>setNum(e.target.value)}
+                                           onChange={e => setNum(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -63,22 +63,22 @@ const RecordPage = observer(() => {
                             <button
                                 className="form__button_save"
                                 onClick={addRecord}
-                            >Add</button>
+                            >Add
+                            </button>
                         </div>
                     </div>
                     <div className="table-record">
                         <h1>Statistics</h1>
                         <div className="table-record__review">
-                            <div className="review__header">
-                                <div className="review__header_name">Exercise</div>
-                                <div className="review__header_weight">Weight</div>
-                                <div className="review__header_date">Num/min</div>
-                                <div className="review__header_num/min">Date</div>
-                                <div className="review__header_view">View</div>
-                                <div className="review__header_del">Trash</div>
+                            <div className="record-review__header">
+                                <div className="record-review__header_name">Exercise</div>
+                                <div className="record-review__header_weight">Weight</div>
+                                <div className="record-review__header_date">Num/min</div>
+                                <div className="record-review__header_num/min">Date</div>
+                                <div className="record-review__header_del">Trash</div>
                             </div>
                             <div>
-                            <AddRecord/>
+                                <AddRecord/>
                             </div>
                         </div>
                     </div>

@@ -142,37 +142,40 @@
     border-radius: 25px;
 }
 
-.review__container{
+.record-review__container{
     border: 2px solid #ffffff;
     border-radius: 20px;
     margin-bottom: 5px;
 }
 
-.table-record__review .review__header{
+.table-record__review .record-review__header{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     padding: 15px;
 }
 
-.table-record__review .review__container{
+.table-record__review .record-review__container{
+    height: 50px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
 }
 
-.review__container_del{
+.record-review__container_del{
     width:25px;
     height:25px;
 }
 
 
-.review__container_view{
+.record-review__container_view{
     width:25px;
     height:25px;
 }
 
-.review__container_del img{
+.record-review__container_del img{
     width:100%;
     height:100%;
 }

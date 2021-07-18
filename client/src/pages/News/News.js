@@ -9,8 +9,8 @@ const News = () => {
         <div className="news">
 
             <div className="news__content">
-                <h1>Franko</h1>
-                <h1>Kolins</h1>
+                <h1>Andrei</h1>
+                <h1>Chigileychik</h1>
                 <div className="news__container">
                     <div className="news-page__img">img</div>
                     <div className="news-page__review">

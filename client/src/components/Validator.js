@@ -7,7 +7,6 @@ const useValidation = (value, validations) => {
     const [maxLengthError, setMaxLengthError] = useState(false)
     const [emailError, setEmailError] = useState(false)
     const [inputValid, setInputValid] = useState(false)
-
     useEffect(() => {
         for (const validation in validations) {
             switch (validation) {
@@ -24,7 +23,8 @@ const useValidation = (value, validations) => {
                     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     return re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true);
                 case 'isNumber':
-                     return (/\D/.test(value)) ? setNumberError(true) : setNumberError(false)
+                      /\D/.test(value) ? setNumberError(true) : setNumberError(false)
+                    break;
 
 
 
@@ -38,7 +38,11 @@ const useValidation = (value, validations) => {
             setInputValid(true);
         }
     }, [isEmpty, minLengthError, maxLengthError, emailError, numberError])
+    const messageError = (message) => {
+        return <div style={{color: "red"}}>{message}</div>
+    }
     return {
+        messageError,
         isEmpty,
         minLengthError,
         maxLengthError,

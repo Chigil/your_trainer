@@ -55,11 +55,11 @@ const MyModal = observer(() => {
                     ariaHideApp={false}
                 >
                     <div>
-                        <div className="close" style={{width: '25px', height: '25px'}}
+                        <div className="close" style={{width: '30px', height: '30px'}}
                              onClick={handleCloseModal}>
                             <img src={close} style={{width: '100%', height: '100%'}} alt="close"/>
                         </div>
-                        <div className="modal-body" style={{paddingTop: '15px'}}>
+                        <div className="modal-body" style={{padding: '15px'}}>
                             <CurrentModal onCloseModal={handleCloseModal}/>
                         </div>
                     </div>

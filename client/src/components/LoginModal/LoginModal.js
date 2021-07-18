@@ -44,9 +44,9 @@ const LoginModal = observer(({onCloseModal}) => {
                     onChange={email.onChange}
                     onBlur={e => email.onBlur(e)}
                 />
-                {(email.isDirty && email.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
-                {(email.isDirty && email.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
-                {(email.isDirty && email.emailError) && <div style={{color: "red"}}>Неккоректная эмайл</div>}
+                {(email.isDirty && email.isEmpty) && email.messageError("Input value")}
+                {(email.isDirty && email.minLengthError) && email.messageError("It's too short")}
+                {(email.isDirty && email.emailError) && email.messageError("It's not email")}
                 <p>Enter Your Password</p>
 
                 <input
@@ -55,9 +55,9 @@ const LoginModal = observer(({onCloseModal}) => {
                     onBlur={e => password.onBlur(e)}
                     type="password"
                 />
-                {(password.isDirty && password.isEmpty) && <div style={{color: "red"}}>Поле не может быть пустым</div>}
-                {(password.isDirty && password.maxLengthError) && <div style={{color: "red"}}>Слишком длинный</div>}
-                {(password.isDirty && password.minLengthError) && <div style={{color: "red"}}>Неккоректная длинна</div>}
+                {(password.isDirty && password.isEmpty) && password.messageError("Input value")}
+                {(password.isDirty && password.maxLengthError) && password.messageError("It's too long")}
+                {(password.isDirty && password.minLengthError) && password.messageError("It's too short")}
                 {isLogin ?
                     <div>
                         Don't have an account? <NavLink to={START_ROUTE + REGISTRATION_ROUTE}> Register now! </NavLink>

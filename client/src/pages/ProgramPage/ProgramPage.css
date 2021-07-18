@@ -129,7 +129,7 @@
 }
 
 .timetable {
-    width: 1050px;
+    width: 970px;
     height: 600px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
@@ -144,8 +144,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
-    height: 545px;
+    width: 960px;
+    height: 480px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(152, 152, 152, 0.6) 100%);
     border-radius: 25px;
 }
@@ -162,8 +162,8 @@
 }
 
 .timetable__review {
-    width: 945px;
-    height: 480px;
+    width: 900px;
+    height: 400px;
     display: grid;
     grid-template-rows: 85px 1fr;
     background: #740005;
