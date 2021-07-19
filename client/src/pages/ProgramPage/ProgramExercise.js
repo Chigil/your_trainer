@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
 
 const parseExercise = (data) => {
-    const values = Object.values(data)
+    if(typeof(data) === "string") data = Object.values(JSON.parse(data))
+    console.log(data)
     return (
         <div>
-            {values.map((el,num)=>{
+            {data.map((el,num)=>{
                 return(
                 <div>{num+1} - approach
                     <div>kg:{el.kg}</div>
@@ -19,13 +19,11 @@ const parseExercise = (data) => {
     )
 }
 
-const ProgramExercise = observer(() => {
-    const {training} = useContext(Context)
+const ProgramExercise = observer(({exercises}) => {
+    console.log(exercises)
     return (
         <div style={{display:"flex",width:"100%",flexDirection:"column"}}>
-            {training.exercises.map(ex => {
-                    console.log(training.exercises)
-                    console.log(ex.text)
+            {exercises.map(ex => {
                     return (
                         <div>
                             Exercises: {ex.title}

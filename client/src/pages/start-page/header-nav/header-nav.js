@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import {HeaderItem} from './header-item'
 
 import './header-nav.css';
-import LoginModal from "../../../components/LoginModal/LoginModal";
+import LoginModal from "../../../components/Modal/LoginModal/LoginModal";
 import {Context} from "../../../index";
 
 

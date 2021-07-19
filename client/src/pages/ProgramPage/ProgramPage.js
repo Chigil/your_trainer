@@ -1,8 +1,6 @@
 import "./ProgramPage.css"
 import React, {useContext, useState} from "react"
-import arrowRight from "../../svg/arrow-circle-right-solid.svg"
-import arrowLeft from "../../svg/arrow-circle-left-solid.svg"
-import ExercisesModal from "../../components/ExersicesModal/ExecisesModal";
+import ExercisesModal from "../../components/Modal/ExersicesModal/ExecisesModal";
 import {createTraining, getTraining} from "../../http/trainingApi";
 import DatePicker from "../../components/DatePicker";
 import {Context} from "../../index";
@@ -10,6 +8,7 @@ import {observer} from "mobx-react-lite";
 import ProgramExercise from "./ProgramExercise";
 import PlusButton from "../../components/Button/PlusButton";
 import MinusButton from "../../components/Button/MinusButton";
+import TrainingCard from "../../components/TrainingCard";
 
 
 const ProgramPage = observer(() => {
@@ -27,8 +26,10 @@ const ProgramPage = observer(() => {
             snackBar.openSnackBar("success", "Created")
             setDate('')
             setName('')
+            training.setExercise([])
         }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"))
     }
+    console.log(JSON.stringify(training.trainings))
 
     return (
         <div className="program">
@@ -50,7 +51,7 @@ const ProgramPage = observer(() => {
                                     onChange={e => setName(e.target.value)}
                                 />
                             </div>
-                            <ProgramExercise/>
+                            <ProgramExercise exercises={training.exercises}/>
                             <PlusButton onClick={() => modal.openModal('ExercisesModal')}/>
                             <MinusButton onClick={() => (training.exercises.pop())}/>
                             <button
@@ -63,33 +64,9 @@ const ProgramPage = observer(() => {
                     </div>
                     <div className="timetable">
 
-                        <h1>Timetable</h1>
+                        <h1>Trainings</h1>
                         <div className="timetable__container">
-                            <div className="timetable__nav">
-                                <div className="timetable__nav_left"><img src={arrowLeft} alt="image"/></div>
-                                <div className="timetable__nav_content">03/30 - 04/04</div>
-                                <div className="timetable__nav_right"><img src={arrowRight} alt="image"/></div>
-                            </div>
-                            <div className="timetable__review">
-                                <div className="timetable-review__header">
-                                    <div className="review__header_name">Monday 03/29</div>
-                                    <div className="review__header_weight">Tuesday 03/30</div>
-                                    <div className="review__header_num/min">Wednesday 03/31</div>
-                                    <div className="review__header_date">Thursday 04/01</div>
-                                    <div className="review__header_view">Friday 04/02</div>
-                                    <div className="review__header_del">Saturday 04/03</div>
-                                    <div className="review__header_sun">Sunday 04/04</div>
-                                </div>
-                                <div className="timetable-review__container">
-                                    <div className="review__container_name">someone</div>
-                                    <div className="review__container_weight">someone</div>
-                                    <div className="review__container_num/min">someone</div>
-                                    <div className="review__container_date">someone</div>
-                                    <div className="review__container_view">someone</div>
-                                    <div className="review__container_del">someone</div>
-                                    <div className="review__container_sun">someone</div>
-                                </div>
-                            </div>
+                            <TrainingCard/>
                         </div>
                     </div>
                 </div>

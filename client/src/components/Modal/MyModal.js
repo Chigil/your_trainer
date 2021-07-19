@@ -1,16 +1,19 @@
 import {observer} from "mobx-react-lite";
 import Modal from "react-modal";
 import React, {useContext} from "react";
-import {Context} from "../index";
+import {Context} from "../../index";
 import LoginModal from "./LoginModal/LoginModal";
 import ExercisesModal from "./ExersicesModal/ExecisesModal";
+import TrainingInfo from "./TrainingInfo/TrainingInfo";
 import * as ModalTypes from "./ModalTypes";
-import close from "../svg/times-circle-solid.svg"
+import close from "../../svg/times-circle-solid.svg"
+
 
 
 const mapTypeToModal = {
     [ModalTypes.ADD_LOGIN_MODAL]: LoginModal,
     [ModalTypes.ADD_EXERCISES_MODAL]: ExercisesModal,
+    [ModalTypes.TRAINING_INFO]: TrainingInfo,
 };
 
 const MyModal = observer(() => {
@@ -69,7 +72,6 @@ const MyModal = observer(() => {
 
     );
 });
-
 
 export default MyModal
 

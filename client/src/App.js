@@ -5,7 +5,7 @@ import {Context} from "./index";
 import {check} from "./http/userAPI";
 import {observer} from "mobx-react-lite";
 import AppRouter from "./components/AppRouter";
-import MyModal from "./components/MyModal";
+import MyModal from "./components/Modal/MyModal";
 import CustomizedSnackbars from "./components/Snackbar";
 import {ScaleLoader} from "react-spinners";
 

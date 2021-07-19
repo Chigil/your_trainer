@@ -1,18 +1,16 @@
-import trash from "../svg/trash-alt-solid.svg";
 import {useContext} from "react";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {deleteNutrition, getNutrition} from "../http/nutritionApi";
+import DeleteButton from "./Button/DeleteButton";
 //Использовать get (Избивиться от фильтра)
 
 const NutritionCalories = observer(() => {
     const {training,snackBar} = useContext(Context)
     const delNutrition = (id) =>{
-        console.log(id)
         deleteNutrition({id:id}).then(data=>{
-            snackBar.openSnackBar("info","Deleted")
+            snackBar.openSnackBar("success","Deleted")
             getNutrition().then(data => training.removeNutrition(id))
-
         })
     }
 
@@ -26,10 +24,7 @@ const NutritionCalories = observer(() => {
                 <div className="nutrition-review__calories_number">
                     {nutrition.calories}
                 </div>
-                <div className="nutrition-review__button_delete"
-                        onClick={()=>delNutrition(nutrition.id)}>
-                    <img src={trash} alt="image"/>
-                </div>
+               <DeleteButton  onClick={()=>delNutrition(nutrition.id)}/>
             </div>
         )}
     </div>)

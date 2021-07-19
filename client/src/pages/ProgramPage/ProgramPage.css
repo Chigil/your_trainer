@@ -129,8 +129,8 @@
 }
 
 .timetable {
-    width: 970px;
-    height: 600px;
+    width: 900px;
+    height: 800px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     display: flex;
@@ -142,53 +142,39 @@
 
 .timetable__container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 960px;
-    height: 480px;
+    flex-direction: row;
+    width: 810px;
+    height: 650px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(152, 152, 152, 0.6) 100%);
     border-radius: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 
 .timetable h1 {
     padding-bottom: 25px;
 }
 
-.timetable__nav {
+.training-card {
     display: flex;
-    flex-wrap: wrap;
-    align-self: flex-end;
-    padding: 20px 20px 15px 0;
-}
-
-.timetable__review {
-    width: 900px;
-    height: 400px;
-    display: grid;
-    grid-template-rows: 85px 1fr;
-    background: #740005;
+    width: 200px;
+    height: 235px;
+    background: rgba(0, 0, 0, 0.8);;
     border-radius: 25px;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 25px;
 }
 
-.timetable__review .timetable-review__header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 15px;
+.training-card_buttons {
+    display: flex;
+    align-items: center;
 }
 
-.timetable__nav_left {
-    width: 30px;
-    height: 30px;
-}
-
-.timetable__nav_right {
-    width: 30px;
-    height: 30px;
-}
-
-.timetable__review .timetable-review__container {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    background: #C4C4C4;
-    border-radius: 0 0 20px 20px;
+.training-card_info {
+    width: 35px;
+    height: 35px;
+    padding-right: 25px;
 }

@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import './LoginModal.css'
-import {login, registration} from "../../http/userAPI";
+import {login, registration} from "../../../http/userAPI";
 import {observer} from "mobx-react-lite"
-import {Context} from "../../index";
+import {Context} from "../../../index";
 import {NavLink, useLocation, useHistory} from "react-router-dom";
-import {APP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, START_ROUTE} from "../../utils/consts";
-import useInput from "../Validator"
+import {APP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, START_ROUTE} from "../../../utils/consts";
+import useInput from "../../Validator"
 
 const LoginModal = observer(({onCloseModal}) => {
     const email = useInput('', {isEmpty: true, minLength: 3, isEmail: true})
@@ -71,6 +71,7 @@ const LoginModal = observer(({onCloseModal}) => {
         </React.Fragment>
     )
 })
+
 export default LoginModal;
 
 

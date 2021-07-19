@@ -7,6 +7,7 @@ export default class TrainingStore {
         this._nutrition = []
         this._weights = []
         this._records = []
+        this._info = []
         makeAutoObservable(this)
     }
 
@@ -29,6 +30,14 @@ export default class TrainingStore {
 
     removeRecord(id) {
         return this._records = this._records.filter(records => records.id !== id)
+    }
+
+    filterTraining(id) {
+        return this._trainings = this._trainings.filter(trainings => trainings.id === id)
+    }
+
+    setInfo(info){
+        this._info = info
     }
 
     setWeight(weights) {
@@ -58,4 +67,9 @@ export default class TrainingStore {
     get records() {
         return this._records
     }
+
+    get info() {
+        return this._info
+    }
+
 }

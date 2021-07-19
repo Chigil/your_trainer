@@ -3,27 +3,21 @@ import {observer} from "mobx-react-lite";
 import MinusButton from "./Button/MinusButton";
 
 
-const ExerciseData = observer( ({setData,number,deleteData}) => {
-    const [kg,setKg] = useState(0)
-    const [num,setNum] = useState(0)
-    useEffect(() => {
-        setData(number,{kg,num})
-    }, [kg,num])
-
+const ExerciseData = observer( ({setData,number,deleteData, data}) => {
     return(
     <div className="exercise-data_content">
         <div>
             <p>kg</p>
             <input className="input"
-                   value = {kg}
-                   onChange={e=>setKg(e.target.value)}
+                   value = {data.kg}
+                   onChange={e=>setData(number,{kg: e.target.value,num: data.num})}
             />
         </div>
         <div>
             <p>num</p>
             <input className="input"
-                   value = {num}
-                   onChange={e=>setNum(e.target.value)}
+                   value = {data.num}
+                   onChange={e=>setData(number,{kg: data.kg,num: e.target.value})}
             />
         </div>
         <div style={{display:'flex',alignItems:'flex-end'}}>

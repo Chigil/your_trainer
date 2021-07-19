@@ -8,11 +8,8 @@ export default class ModalStore {
         makeAutoObservable(this)
     }
 
-    setModalValues(data) {
-        this._modalValues = data;
-    };
-
-    openModal(name) {
+    openModal(name,value) {
+        this._modalValues = value;
         this._modalState = true;
         this._modalName = name;
     };

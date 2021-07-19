@@ -3,6 +3,7 @@ import React, {useContext} from "react";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {deleteRecord, getRecord} from "../http/recordApi";
+import DeleteButton from "./Button/DeleteButton";
 
 
 const AddRecord = observer(() => {
@@ -21,9 +22,7 @@ const AddRecord = observer(() => {
                     <div className="record-review__container_weight">{record.weight}</div>
                     <div className="record-review__container_num/min">{record.num}</div>
                     <div className="record-review__container_date">{new Date(record.date).toLocaleDateString()}</div>
-                    <div className="record-review__container_del"
-                         onClick={() => delRecord(record.id)}>
-                        <img src={trash} alt="image"/></div>
+                    <DeleteButton onClick={() => delRecord(record.id)}/>
                 </div>
             )}
         </React.Fragment>
