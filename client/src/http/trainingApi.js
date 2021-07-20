@@ -9,8 +9,8 @@ export const deleteTraining = async (id) =>{
     return data
 }
 
-export const getTraining = async (query) =>{
-    const {data} = await $host.get('api/training',query)
+export const getTraining = async (body) =>{
+    const {data} = await $host.get('api/training',body)
     return data
 }
 

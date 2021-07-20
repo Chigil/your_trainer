@@ -3,7 +3,7 @@ import info from "../svg/info-circle-solid.svg";
 
 import {Context} from "../index";
 import DeleteButton from "./Button/DeleteButton";
-import {deleteTraining, getTraining} from "../http/trainingApi";
+import {deleteTraining, getTraining, getTrainingById} from "../http/trainingApi";
 import {observer} from "mobx-react-lite";
 //Использовать get (Избивиться от фильтра)
 
@@ -13,13 +13,15 @@ const TrainingCard = observer(() => {
         console.log(id)
         deleteTraining({id: id}).then(data => {
             snackBar.openSnackBar("success", "Deleted")
-            getTraining().then(data => training.setTraining())
+            getTraining().then(data => training.setTraining(data))
 
         })
     }
 
     const openTrainingInfo = (id) => {
-        modal.openModal("TrainingInfo",{id})
+        getTrainingById({id:id}).then(data => {
+            modal.openModal("TrainingInfo",{data})
+        })
     }
 
     return (

@@ -9,6 +9,7 @@ import ProgramExercise from "./ProgramExercise";
 import PlusButton from "../../components/Button/PlusButton";
 import MinusButton from "../../components/Button/MinusButton";
 import TrainingCard from "../../components/TrainingCard";
+import jwt_decode from "jwt-decode";
 
 
 const ProgramPage = observer(() => {
@@ -20,7 +21,7 @@ const ProgramPage = observer(() => {
             date: date,
             training_name: name,
             exercise_names: training.exercises,
-            userId: user.id
+            userId: jwt_decode(localStorage.token).id
         }).then(data => {
             getTraining().then(data => training.setTraining(data))
             snackBar.openSnackBar("success", "Created")
@@ -30,7 +31,6 @@ const ProgramPage = observer(() => {
         }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"))
     }
     console.log(JSON.stringify(training.trainings))
-
     return (
         <div className="program">
             <div className="program__content">

@@ -5,16 +5,17 @@ import DatePicker from "../../components/DatePicker";
 import AddRecord from "../../components/AddRecord";
 import {createRecord, getRecord} from "../../http/recordApi";
 import {Context} from "../../index";
+import jwt_decode from "jwt-decode";
 
 
 const RecordPage = observer(() => {
-    const {training, user, snackBar} = useContext(Context)
+    const {training, snackBar} = useContext(Context)
     const [weight, setWeight] = useState('')
     const [exercise, setExercise] = useState('')
     const [num, setNum] = useState('')
     const [date, setDate] = useState('')
     const addRecord = () => {
-        createRecord({date: date, weight: weight, exercise_name: exercise, num: num, userId: user.id}).then(data => {
+        createRecord({date: date, weight: weight, exercise_name: exercise, num: num, userId: jwt_decode(localStorage.token).id}).then(data => {
             snackBar.openSnackBar("success", "Created")
             getRecord().then(data => training.setRecord(data))
             setDate('')

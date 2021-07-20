@@ -5,14 +5,14 @@ import {observer} from "mobx-react-lite";
 import ChartsWeight from "../../components/ChartsWeight";
 import {createWeight, getWeight} from "../../http/weightAPI";
 import {Context} from "../../index";
-
+import jwt_decode from "jwt-decode";
 
 const WeightPage = observer(() => {
-    const {training, user, snackBar} = useContext(Context)
+    const {training, snackBar} = useContext(Context)
     const [date, setDate] = useState('')
     const [weight, setWeight] = useState('')
     const addWeight = () => {
-        createWeight({date: date, weight: weight, userId: user.id}).then(data => {
+        createWeight({date: date, weight: weight, userId: jwt_decode(localStorage.token).id}).then(data => {
             getWeight().then(data => training.setWeight(data))
             snackBar.openSnackBar("success", "Created")
             setDate('')

@@ -6,15 +6,16 @@ import NutritionCalories from "../../components/NutritionCalories";
 import {createNutrition, getNutrition} from "../../http/nutritionApi";
 import {Context} from "../../index";
 import useInput from "../../components/Validator"
+import jwt_decode from "jwt-decode";
 
 const NutritionPage = observer(() => {
-    const {training,snackBar,user} = useContext(Context)
+    const {training,snackBar} = useContext(Context)
     const [date, setDate] = useState('')
     const [name,setName] = useState('')
     const calories = useInput('0', {isEmpty: true, isNumber: true})
     const calorieTotal = Object.values(training.nutrition).reduce((totalCalories, nutrition) => totalCalories + nutrition.calories, 0);
     const addNutrition =  () => {
-        createNutrition({date: date, name_nutrition: name, calories: calories.value, userId: user.id}).then(data => {
+        createNutrition({date: date, name_nutrition: name, calories: calories.value, userId: jwt_decode(localStorage.token).id}).then(data => {
             getNutrition().then(data => training.setNutrition(data))
             snackBar.openSnackBar("success","Created")
             setDate('')

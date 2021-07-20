@@ -25,7 +25,6 @@ const LoginModal = observer(({onCloseModal}) => {
                 console.log(data)
             }
             onCloseModal()
-            user.setUserId(data.id)
             user.setUser(user)
             user.setIsAuth(true)
             history.push(APP_ROUTE)

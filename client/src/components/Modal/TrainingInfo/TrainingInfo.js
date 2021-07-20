@@ -1,24 +1,17 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {observer} from "mobx-react-lite";
+import React, {useContext} from 'react';
 import {Context} from "../../../index";
-import {getTraining, getTrainingById} from "../../../http/trainingApi";
 import ProgramExercise from "../../../pages/ProgramPage/ProgramExercise";
 
-const TrainingInfo = observer(({id}) => {
 
-    const {training, snackBar, modal} = useContext(Context)
-    useEffect(()=>{
-        getTrainingById(modal._modalValues).then(data=>training.setInfo(data))
-        console.log("dada")
-
-    },[])
-    console.log(training.info.exercise_names)
-    return (
-        <div>
-            <div>Training:{training.info.training_name}</div>
-            <ProgramExercise exercises={training.info.exercise_names}/>
-        </div>
-    );
-});
+const TrainingInfo = () => {
+    const {training, modal} = useContext(Context)
+        return (
+            <div>
+               <div>Training: {modal._modalValues.data.training_name}</div>
+                <div>Date: {modal._modalValues.data.date}</div>
+                <ProgramExercise exercises={modal._modalValues.data.exercise_names}/>
+            </div>
+        );
+};
 
 export default TrainingInfo;

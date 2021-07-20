@@ -37,7 +37,7 @@ export default class TrainingStore {
     }
 
     setInfo(info){
-        this._info = info
+        this._info =  info
     }
 
     setWeight(weights) {
