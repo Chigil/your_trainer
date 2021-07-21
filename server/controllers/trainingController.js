@@ -45,7 +45,6 @@ class TrainingController {
     async getOne(req, res, next) {
         try {
             const {id} = req.params;
-            console.log('id: ', id)
             const food = await Training.findOne(
                 {
                     where: {id},

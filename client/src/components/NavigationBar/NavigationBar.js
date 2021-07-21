@@ -18,6 +18,8 @@ const NavigationBar = (props) => {
         user.setIsAuth(false)
         history.push(START_ROUTE)
         window.location.reload();
+        localStorage.clear()
+
     }
     const [toggleState, setToggleState] = useState("");
 

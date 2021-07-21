@@ -9,21 +9,33 @@ import useInput from "../../components/Validator"
 import jwt_decode from "jwt-decode";
 
 const NutritionPage = observer(() => {
-    const {training,snackBar} = useContext(Context)
+    const {training, snackBar} = useContext(Context)
     const [date, setDate] = useState('')
-    const [name,setName] = useState('')
+    const [name, setName] = useState('')
     const calories = useInput('0', {isEmpty: true, isNumber: true})
     const calorieTotal = Object.values(training.nutrition).reduce((totalCalories, nutrition) => totalCalories + nutrition.calories, 0);
-    const addNutrition =  () => {
-        createNutrition({date: date, name_nutrition: name, calories: calories.value, userId: jwt_decode(localStorage.token).id}).then(data => {
-            getNutrition().then(data => training.setNutrition(data))
-            snackBar.openSnackBar("success","Created")
-            setDate('')
-            setName('')
-            calories.setValue('0')
-        }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"))
+    const request = {
+        date: date,
+        name_nutrition: name,
+        calories: calories.value,
+        userId: jwt_decode(localStorage.token).id
+    };
+
+    const addNutrition = () => {
+        createNutrition(request).then(() => {
+            getNutrition().then(data => training.setNutrition(data));
+            snackBar.openSnackBar("success", "Created");
+            setDate('');
+            setName('');
+            calories.setValue('0');
+        }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"));
     }
 
+    const dateNutrition = () => {
+        console.log("ok")
+        console.log(date)
+        getNutrition({date}).then(data => console.log(data))
+    }
 
     return (
         <React.Fragment>
@@ -45,7 +57,7 @@ const NutritionPage = observer(() => {
                                         <h3>Name eating:</h3>
                                         <input
                                             value={name}
-                                            onChange={e=>setName(e.target.value)}
+                                            onChange={e => setName(e.target.value)}
                                         />
                                     </li>
                                     <li className="calories__item">
@@ -62,7 +74,9 @@ const NutritionPage = observer(() => {
                                 <button
                                     className="calories__button_save"
                                     onClick={addNutrition}
-                                >Add</button>
+                                >Add
+                                </button>
+                                <button onClick={dateNutrition}>filter</button>
                             </div>
                         </div>
                         <div className="nutrition-page__review">
