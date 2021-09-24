@@ -1,7 +1,7 @@
 import React, {Component, useRef, useState} from 'react';
-import push from "../../../img/push.png";
-import squat from "../../../img/squat.png";
-import deadlift from "../../../img/deadlift.png";
+import push from "../../../svg/push.svg";
+import squat from "../../../svg/squat.svg";
+import deadlift from "../../../svg/lift.svg";
 import './calculate-section.css'
 
 const images = [{

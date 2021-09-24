@@ -12,9 +12,6 @@ constants:
   href={`${personalSpaceRoute}activities/unassigned`}
   title={t('common:sub-menu-unassigned-activities')}
 >
-GIT
-
-git pull - Загрузить акутальные изменения из ветки (данные)
 
 */
 import React, {Component} from 'react';
@@ -27,6 +24,8 @@ import './pages.css'
 
 import classnames from 'classnames'
 import {HeaderItem} from "./header-nav/header-item";
+
+
 
 
 
@@ -51,6 +50,7 @@ export class StartPage extends Component {
         )
     }
 
+
     handleClick() {
         this.setState(state => ({
             clicked: !state.clicked
@@ -66,21 +66,22 @@ export class StartPage extends Component {
 
     render() {
         return (
-            <div>
+
                 <div className={classnames("wrapper", {"_lock": this.state.clicked})}>
                     <MenuIcon onActive={this.handleClick} clicked={this.state.clicked}/>
                     <HeaderNav clicked={this.state.clicked} sectionClick={this.sectionClick}/>
                     {this.currentSection.map((item, index) => {
                         return (
-                            <section className={item.cName + "-section"} ref={item.ref}>
-                                <div className={item.cName + "-section__content"}>
-                                    {item.componentSection}
-                                </div>
-                            </section>
+
+                                <section className={item.cName + "-section"} ref={item.ref}>
+                                    <div className={item.cName + "-section__content"}>
+                                     {item.componentSection}
+                                    </div>
+                                </section>
                         )
                     })}
                 </div>
-            </div>
+
         )
     }
 }
