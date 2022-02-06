@@ -18,12 +18,12 @@ import {getTraining} from "../../http/trainingApi";
 
 const GoPage = observer(() => {
     const {training} = useContext(Context)
-    useEffect(()=>{
+    useEffect(() => {
         getWeight().then(data => training.setWeight(data))
         getNutrition().then(data => training.setNutrition(data))
         getRecord().then(data => training.setRecord(data))
         getTraining().then(data => training.setTraining(data))
-    },[])
+    }, [])
     return (
         <BrowserRouter>
             <div className="go-page">

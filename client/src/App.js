@@ -10,7 +10,6 @@ import CustomizedSnackbars from "./components/Snackbar";
 import {ScaleLoader} from "react-spinners";
 
 
-
 const App = observer(() => {
     const {user} = useContext(Context)
     const [loading, setLoading] = useState(true)
@@ -22,11 +21,11 @@ const App = observer(() => {
     }, [])
 
     if (loading) {
-       return <ScaleLoader/>
+        return <ScaleLoader/>
     }
     return (
         <BrowserRouter>
-           <MyModal/>
+            <MyModal/>
             <CustomizedSnackbars/>
             <AppRouter/>
         </BrowserRouter>

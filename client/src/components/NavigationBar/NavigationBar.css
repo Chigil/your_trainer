@@ -1,41 +1,41 @@
-
-
-.navigation{
+.navigation {
+    z-index: 1000;
     position: fixed;
     width: 60px;
     height: 480px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
     top: 250px;
     left: 0;
 }
-.navigation.active{
+
+.navigation.active {
     width: 220px;
 }
 
-.navigation ul{
+.navigation ul {
     padding: 0;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
 }
 
-.navigation ul li{
+.navigation ul li {
     position: relative;
     list-style: none;
     width: 100%;
 }
 
-.navigation ul li:hover{
-    background:#740005;
+.navigation ul li:hover {
+    background: #740005;
     border-radius: 20px;
 }
 
-.navigation ul li a{
+.navigation ul li a {
     position: relative;
     width: 100%;
     display: flex;
@@ -46,10 +46,10 @@
 }
 
 .navigation ul li a:hover {
-    color:#ffffff;
+    color: #ffffff;
 }
 
-.navigation ul li a .icon{
+.navigation ul li a .icon {
     position: relative;
     display: block;
     min-width: 60px;
@@ -64,7 +64,7 @@
 }
 
 .navigation ul li a .title {
-    padding-left:15px;
+    padding-left: 15px;
     font-size: 22px;
     position: relative;
     display: block;
@@ -73,7 +73,7 @@
     white-space: nowrap;
 }
 
-.toggle{
+.toggle {
     position: fixed;
     left: 40px;
     top: 440px;
@@ -87,14 +87,17 @@
     z-index: 0;
     transition: 0.5s;
 }
-.toggle.active{
+
+.toggle.active {
     left: 200px;
 }
-.toggle:hover{
+
+.toggle:hover {
     color: #ffffff;
     border: 5px solid #FFFFFF;
 }
-.toggle::before{
+
+.toggle::before {
     content: '\f061';
     font-family: fontAwesome;
     position: absolute;

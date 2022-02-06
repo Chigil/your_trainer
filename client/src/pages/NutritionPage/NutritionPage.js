@@ -31,12 +31,6 @@ const NutritionPage = observer(() => {
         }).catch(() => snackBar.openSnackBar("error", "Enter all input please!"));
     }
 
-    const dateNutrition = () => {
-        console.log("ok")
-        console.log(date)
-        getNutrition({date}).then(data => console.log(data))
-    }
-
     return (
         <React.Fragment>
             <div className="nutrition-page">
@@ -76,7 +70,6 @@ const NutritionPage = observer(() => {
                                     onClick={addNutrition}
                                 >Add
                                 </button>
-                                <button onClick={dateNutrition}>filter</button>
                             </div>
                         </div>
                         <div className="nutrition-page__review">

@@ -16,7 +16,7 @@ const HeaderNav = (props) => {
             <ul className="header_list ">
                 {HeaderItem.map((item, index) => {
                     return (
-                        <li className="header_item">
+                        <li className="header_item" key={index}>
                             <a
                                 data-goto={".page__section_" + index}
                                 className={item.cName}
@@ -27,7 +27,7 @@ const HeaderNav = (props) => {
                         </li>
                     )
                 })}
-                    <li className="header_item">
+                    <li className="header_item" key="login-modal">
                         <a className="header_link"
                             onClick={()=>modal.openModal("LoginModal")}
                         >Login

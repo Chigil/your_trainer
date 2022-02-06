@@ -48,7 +48,7 @@ const CalculateSectionContent = () => {
                     <div className="calculate-buttons">
                         {images.map((item,index) =>{
                             return (
-                            <div className={item.cName} onClick={()=>setImg(item.img)}>
+                            <div className={item.cName} onClick={()=>setImg(item.img)} key={index}>
                             <img src={item.img}/>
                             <p>{item.name}</p>
                             </div>

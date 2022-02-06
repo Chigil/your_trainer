@@ -2,12 +2,12 @@ import './NavigationBar.css';
 
 import React, {useContext, useState} from "react";
 import {NavigationBarItem} from "./NavigationBarItem"
-import {NavLink,useHistory} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {Context} from "../../index";
 import {APP_ROUTE, START_ROUTE} from "../../utils/consts";
 
 
-const NavigationBar = (props) => {
+const NavigationBar = () => {
     const history = useHistory()
     // Create Button for Exit from userPage
     const {user} = useContext(Context)
@@ -33,7 +33,7 @@ const NavigationBar = (props) => {
                 <ul>
                     {NavigationBarItem.map((item, index) => {
                         return (
-                            <li>
+                            <li key={item.title}>
                                 <NavLink to={`${APP_ROUTE}${item.href}`}>
                                     <span className="icon"><i className={`fa fa-${item.cName}`}
                                                               aria-hidden="true"/></span>
@@ -43,15 +43,14 @@ const NavigationBar = (props) => {
                         )
                     })}
                     <li>
-                        <a><NavLink to={'/'}>
+                        <NavLink to={'/'}>
                                 <span onClick={() => {
                                     logOut()
                                 }} className="icon"><i className={`fa fa-sign-out`} aria-hidden="true"/></span>
-                                <span onClick={() => {
-                                    logOut()
-                                }} className="title">{"Exit"}</span>
-                            </NavLink>
-                        </a>
+                            <span onClick={() => {
+                                logOut()
+                            }} className="title">{"Exit"}</span>
+                        </NavLink>
                     </li>
                 </ul>
                 <span className={`toggle ${toggleState}`} onClick={toggle}/>

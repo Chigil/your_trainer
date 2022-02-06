@@ -13,6 +13,7 @@
 }
 
 .news__content h1 {
+    margin-right: 10px;
     font-style: normal;
     height: 40px;
     font-weight: normal;
@@ -41,6 +42,7 @@
 }
 .news-page__img{
     display: flex;
+    flex-direction: column;
     width: 235px;
     height: 300px;
     background: linear-gradient(147.15deg, rgba(138, 32, 37, 0.3) 2.64%, rgba(0, 0, 0, 0.3) 100%);
@@ -49,7 +51,16 @@
     align-items: center;
 }
 
+.image-upload{
+    display: none;
+}
+.image-upload-label{
+    padding: 5px;
+    border: 2px black dashed;
+    border-radius: 15px;
+}
 .news-page__review {
+    margin: 0 0 10px 10px;
     flex-wrap: wrap;
     padding: 15px;
     display: grid;

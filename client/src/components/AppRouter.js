@@ -1,4 +1,4 @@
-import {StartPage} from "../pages/start-page/container-main";
+import StartPage from "../pages/start-page/container-main";
 import GoPage from "../pages/GoPage/GoPage";
 import {observer} from "mobx-react-lite";
 import {Switch,Redirect,Route} from "react-router-dom";
